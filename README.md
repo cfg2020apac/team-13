@@ -106,7 +106,7 @@ Return Type:
 ```
 
 ## 10. /web/upcomingEvents
-![](imgs/upcomingEvents.PNG) Array of json objects with all details of all registered events.
+![](imgs/upcomingEvent.PNG) Array of json objects with all details of all registered events.
 
 ## 11. /web/allVolunteers 
 ![](imgs/allVolunteers.PNG) Array of json objects with all details of all registered volunteers.
