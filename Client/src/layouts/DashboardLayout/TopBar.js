@@ -69,7 +69,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" href="/">
             <InputIcon />
           </IconButton>
         </Hidden>
