@@ -47,38 +47,33 @@ Return Type:
 ```
 
 ## 4. /data/attendanceChart
-![](imgs/attendanceChart.PNG) Data is returned as JSON, refer to the picture and text below.
+![](imgs/attendanceChart.PNG) Data is returned as JSON, refer to the picture and text below. (Image is outdated, numbers are replaced by last 4 digits of the OccurenceID)
 ```javascript
 {
-    "0": {
-        "Needed": 16,
-        "Confirmed": 10,
-        "Attended": 8
+    "6866": {
+        "Needed": 200,
+        "Confirmed": 2,
+        "Attended": 0
     },
-    "1": {
-        "Needed": 30,
-        "Confirmed": 27,
-        "Attended": 27
+    "6868": {
+        "Needed": 50,
+        "Confirmed": 0,
+        "Attended": 0
     },
-    "2": {
-        "Needed": 30,
-        "Confirmed": 27,
-        "Attended": 27
+    "6870": {
+        "Needed": 20,
+        "Confirmed": 0,
+        "Attended": 0
     },
-    "3": {
-        "Needed": 30,
-        "Confirmed": 28,
-        "Attended": 28
+    "6871": {
+        "Needed": 20,
+        "Confirmed": 15,
+        "Attended": 0
     },
-    "4": {
+    "6881": {
         "Needed": 3,
-        "Confirmed": 7,
-        "Attended": 7
-    },
-    "5": {
-        "Needed": 3,
-        "Confirmed": 1,
-        "Attended": 1
+        "Confirmed": 0,
+        "Attended": 0
     },
     .
     .
