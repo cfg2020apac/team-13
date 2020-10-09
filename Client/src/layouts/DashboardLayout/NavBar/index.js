@@ -34,23 +34,18 @@ const items = [
   },
   {
     href: '/app/volunteers',
-    icon: UsersIcon,
+    icon: UserIcon,
     title: 'Volunteers'
+  },
+  {
+    href: '/app/ngo',
+    icon: UsersIcon,
+    title: 'NGOs'
   },
   {
     href: '/app/events',
     icon: EventIcon,
     title: 'Events'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
   }
 ];
 

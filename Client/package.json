@@ -54,6 +54,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@nivo/core": "^0.62.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",

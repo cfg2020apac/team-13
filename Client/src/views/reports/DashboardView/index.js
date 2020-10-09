@@ -1,18 +1,18 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {
   Container,
   Grid,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Budget from './Budget';
+import { useHttpClient } from "src/hooks/http-hook";
 import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
-import Sales from './Sales';
 import PercentageSignups from './PercentageSignups';
 import TotalVolunteers from './TotalVolunteers';
-import TotalProfit from './TotalProfit';
-import TrafficByDevice from './TrafficByDevice';
+import EventTypes from "./EventTypes";
+import VolunteerDemographics from "./VolunteerDemographics";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,11 +20,57 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
+  },
+  pie: {
+    fontWeight: 'bold',
   }
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
+  const { isLoading, error, sendRequest } = useHttpClient();
+
+  // const [dataSets, setDataSets] = useState([]);
+  // const [currentData, setCurrentData] = useState({
+  //   timestamp: "",
+  //   ecg_data: [],
+  // });
+  // const [chartData, setChartData] = useState();
+  //
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const responseData = await sendRequest(
+  //         //  TODO: CHANGE BACK TO PROD
+  //         `${process.env.REACT_APP_PROD_URL}/data/ecg`,
+  //         "GET",
+  //         null,
+  //         {}
+  //       );
+  //
+  //       if (responseData) {
+  //         const latestData = responseData.data[0];
+  //
+  //         setDataSets((prev) => {
+  //           prev = responseData.data;
+  //           return prev;
+  //         });
+  //
+  //         setCurrentData((prev) => {
+  //           prev = latestData;
+  //           prev.ecg_data = latestData.ecg_data;
+  //           return prev;
+  //         });
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //
+  //   if (currentData.ecg_data.length === 0) {
+  //     getData();
+  //   }
+  // }, [isLoading, currentData, sendRequest, setCurrentData, error]);
 
   return (
     <Page
@@ -60,8 +106,9 @@ const Dashboard = () => {
             md={12}
             xl={9}
             xs={12}
+            className={classes.pie}
           >
-            <Sales />
+            <EventTypes />
           </Grid>
           <Grid
             item
@@ -69,8 +116,9 @@ const Dashboard = () => {
             md={6}
             xl={3}
             xs={12}
+            className={classes.pie}
           >
-            <TrafficByDevice />
+            <VolunteerDemographics />
           </Grid>
           <Grid
             item
