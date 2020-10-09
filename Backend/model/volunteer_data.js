@@ -26,27 +26,27 @@ const VolunteerSchema = mongoose.Schema({
     required: true
   },
   Attendance_Status:{
-      tpye: String,
+    type: String,
       required: true
   },
   Employer:{
-    tpye: String,
+    type: String,
     required: true
   },
   Attendance_Status:{
-    tpye: String,
+    type: String,
     required: true
   },
   Volunteer_Opportunity_Name:{
-    tpye: String,
+    type: String,
     required: true
   },
   Organization_Name:{
-    tpye: String,
+    type: String,
     required: true
   },
   Type:{
-    tpye: String,
+    type: String,
     required: true
   },
   Contact_ID:{
