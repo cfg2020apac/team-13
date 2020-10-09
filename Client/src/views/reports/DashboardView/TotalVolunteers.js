@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const TotalVolunteers = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -91,8 +91,8 @@ const TotalCustomers = ({ className, ...rest }) => {
   );
 };
 
-TotalCustomers.propTypes = {
+TotalVolunteers.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalCustomers;
+export default TotalVolunteers;

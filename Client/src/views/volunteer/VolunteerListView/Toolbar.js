@@ -45,7 +45,7 @@ const Toolbar = ({ className, ...rest }) => {
           color="primary"
           variant="contained"
         >
-          Add customer
+          Add volunteer
         </Button>
       </Box>
       <Box mt={3}>
@@ -66,7 +66,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search customer"
+                placeholder="Search volunteer"
                 variant="outlined"
               />
             </Box>

@@ -18,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CustomerListView = () => {
+const VolunteerListView = () => {
   const classes = useStyles();
   const [volunteers] = useState(data);
 
   return (
     <Page
       className={classes.root}
-      title="Customers"
+      title="Volunteers"
     >
       <Container maxWidth={false}>
         <Toolbar />
@@ -37,4 +37,4 @@ const CustomerListView = () => {
   );
 };
 
-export default CustomerListView;
+export default VolunteerListView;

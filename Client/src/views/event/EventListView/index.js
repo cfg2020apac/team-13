@@ -8,7 +8,7 @@ import {
 import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
-import ProductCard from './ProductCard';
+import EventCard from './EventCard';
 import data from './data';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,7 @@ const ProductList = () => {
                 md={6}
                 xs={12}
               >
-                <ProductCard
+                <EventCard
                   className={classes.productCard}
                   product={product}
                 />
