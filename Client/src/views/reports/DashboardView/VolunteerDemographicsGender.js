@@ -60,28 +60,28 @@ const VolunteerDemographicsGender = ({ className, ...rest }) => {
         );
 
         if (responseData) {
-          const latestData = responseData.data[0];
-
-          setDataSets((prev) => {
-            prev = responseData.data;
-            return prev;
-          });
-
-          setCurrentData((prev) => {
-            prev = latestData;
-            prev.ecg_data = latestData.ecg_data;
-            return prev;
+          setData(() => {
+            const genders = [];
+            for (let key in responseData) {
+              const obj = {};
+              obj["id"] = key;
+              obj["label"] = key;
+              obj["value"] = responseData[key];
+              genders.push(obj);
+            }
+            return genders;
           });
         }
+        console.log(responseData);
       } catch (err) {
         console.log(err);
       }
     };
 
-    if (currentData.ecg_data.length === 0) {
+    if (data.length === 0) {
       getData();
     }
-  }, [isLoading, currentData, sendRequest, setCurrentData, error]);
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Card
