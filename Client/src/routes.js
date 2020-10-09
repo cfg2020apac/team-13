@@ -5,7 +5,8 @@ import MainLayout from 'src/layouts/MainLayout';
 import NgoLayout from 'src/layouts/NgoLayout';
 import VolunteerLayout from 'src/layouts/VolunteerLayout';
 import AccountView from 'src/views/account/AccountView';
-import VolunteerListView from 'src/views/volunteer/VolunteerListView';
+import VolunteerListView from 'src/views/volunteerAdmin/VolunteerListView';
+import NgoListView from "./views/ngoAdmin/NgoListView";
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
@@ -25,7 +26,7 @@ const routes = [
       { path: 'volunteers', element: <VolunteerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'events', element: <ProductListView /> },
-      { path: 'settings', element: <SettingsView /> },
+      { path: 'ngos', element: <NgoListView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

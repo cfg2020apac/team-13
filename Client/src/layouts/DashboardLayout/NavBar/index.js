@@ -38,7 +38,7 @@ const items = [
     title: 'Volunteers'
   },
   {
-    href: '/app/ngo',
+    href: '/app/ngos',
     icon: UsersIcon,
     title: 'NGOs'
   },
