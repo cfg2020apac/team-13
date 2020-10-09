@@ -44,7 +44,7 @@ router.get("/attendanceChart", async (req, res) => {
       var output = {};
 
       for (var element in x){
-        output[element] = {'Needed': x[element]['MaxAttendance'],
+        output[x[element]["OccurenceID"].slice(-4)] = {'Needed': x[element]['MaxAttendance'],
                            'Confirmed': x[element]['Confirmed'],
                             'Attended': x[element]['Attended']}
       }
@@ -61,18 +61,21 @@ router.get("/typeChart", async (req, res) => {
       try {
         let x = await handsOnData.find();
         //console.log(x);
-        var output = {};
+        var output = {'Integrated': 0};
 
         for (var element in x){
             //console.log(x[element]);
-            if(x[element]["PopulationsServed"] in output){
+            if (x[element]["PopulationsServed"] == "" || x[element]["PopulationsServed"].search(";") != -1){
+                output['Integrated'] += 1;
+            }
+            else if(x[element]["PopulationsServed"] in output){
                 output[x[element]["PopulationsServed"]] += 1;
             }
             else{
                 output[x[element]["PopulationsServed"]] = 1;
             }
         }
-        console.log(output);
+        //console.log(output);
         res.json(output);
     }
       catch (e) {
