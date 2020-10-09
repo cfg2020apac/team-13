@@ -7,7 +7,28 @@ const router = express.Router();
 const NGOpartnerData = require("../model/ngo_partner")
 const handsOnData = require("../model/handsOn");
 const volunteerData = require("../model/volunteer_data");
-const newVolunteerData = require("../model/new_volunteer")
+const newVolunteerData = require("../model/new_volunteer");
+const e = require("express");
+
+router.get("/attendanceChart", async (req, res) => {
+    try {
+      let x = await handsOnData.find();
+      //console.log(x);
+      var output = {};
+
+      for (var element in x){
+        output[element] = {'Needed': x[element]['MaxAttendance'],
+                           'Confirmed': x[element]['Confirmed'],
+                            'Attended': x[element]['Attended']}
+      }
+      //console.log(output);
+      res.json(output);
+  }
+    catch (e) {
+      console.log(e);
+      res.send({ message: "Error in GETing types of Areas." })
+    }
+});
 
 router.get("/typeChart", async (req, res) => {
       try {
@@ -16,7 +37,7 @@ router.get("/typeChart", async (req, res) => {
         var output = {};
 
         for (var element in x){
-            console.log(x[element]);
+            //console.log(x[element]);
             if(x[element]["PopulationsServed"] in output){
                 output[x[element]["PopulationsServed"]] += 1;
             }

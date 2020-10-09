@@ -45,3 +45,42 @@ Return Type:
     "Children and youth; Refugees and asylum seekers": 1
 }
 ```
+
+## 4. /data/attendanceChart
+![](imgs/attendanceChart.PNG) Data is returned as JSON, refer to the picture and text below.
+```javascript
+{
+    "0": {
+        "Needed": 16,
+        "Confirmed": 10,
+        "Attended": 8
+    },
+    "1": {
+        "Needed": 30,
+        "Confirmed": 27,
+        "Attended": 27
+    },
+    "2": {
+        "Needed": 30,
+        "Confirmed": 27,
+        "Attended": 27
+    },
+    "3": {
+        "Needed": 30,
+        "Confirmed": 28,
+        "Attended": 28
+    },
+    "4": {
+        "Needed": 3,
+        "Confirmed": 7,
+        "Attended": 7
+    },
+    "5": {
+        "Needed": 3,
+        "Confirmed": 1,
+        "Attended": 1
+    },
+    .
+    .
+    .
+```
