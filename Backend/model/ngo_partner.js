@@ -1,73 +1,73 @@
 const mongoose = require("mongoose");
 
-const NGOPartner = mongoose.Schema({
+const NGOPartnerSchema = mongoose.Schema({
   OrganizationName:{
     type: String,
-    required: true
+    required: false
   },
   Section88:{
     type: String,
-    required: true
+    required: false
   },
   FocusArea:{
     type: String,
-    required: true
+    required: false
   },
   ServedPopulationGroups:{
     type: String,
-    required: true
+    required: false
   },
   DescriptionServedGroup: {
     type: String,
-    required: true
+    required: false
   },
   Covid19DailyNecessities:{
     type: String,
-    required: true
+    required: false
   },
   Covid19ProgramIdeas:{
       tpye: String,
-      required: true
+      required: false
   },
   LastUpdated:{
     type: String,
-    required: true
+    required: false
   },
   Remarks:{
     type: String,
-    required: true
+    required: false
   },
   Location:{
     type: String,
-    required: true
+    required: false
   },
   Affliliate:{
     type: String,
-    required: true
+    required: false
   },
   NumberOfStaff:{
     type: Number,
-    required: true
+    required: false
   },
   NumberOfBeneficiary:{
     type: Number,
-    required: true
+    required: false
   },
   Funding:{
     type: String,
-    required: true
+    required: false
   },
   MethodsToRecruit:{
     type: String,
-    required: true
+    required: false
   },
   Requirements:{
     type: String,
-    required: true
+    required: false
   },
   WorkWithUsBefore:{
     type: String,
-    required: true
+    required: false
   }
 });
 

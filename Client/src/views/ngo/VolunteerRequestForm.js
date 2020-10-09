@@ -18,7 +18,6 @@ import Page from 'src/components/Page';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    height: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
   }
@@ -31,7 +30,7 @@ const VolunteerRequestForm = () => {
   return (
     <Page
       className={classes.root}
-      title="Register"
+      title="Volunteer Request"
     >
       <Box
         display="flex"
@@ -42,23 +41,37 @@ const VolunteerRequestForm = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
+              ngoName: '',
+              programName: '',
+              programObjective: '',
               email: '',
-              firstName: '',
-              lastName: '',
-              password: '',
+              phoneNumber: '',
+              title: '',
+              location: '',
+              startDate: '',
+              endDate: '',
+              volunteerNumber: '',
+              ageRequirement: '',
               policy: false
             }}
             validationSchema={
               Yup.object().shape({
+                ngoName: Yup.string().max(255).required('NGO name is required'),
+                programName: Yup.string().max(255).required('Program name is required'),
+                programObjective: Yup.string().max(255).required('Program Objective is required'),
                 email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                firstName: Yup.string().max(255).required('First name is required'),
-                lastName: Yup.string().max(255).required('Last name is required'),
-                password: Yup.string().max(255).required('password is required'),
+                phoneNumber: Yup.string().max(255).required('Phone number is required'),
+                title: Yup.string().max(255).required('Title is required'),
+                location: Yup.string().max(255).required('Location is required'),
+                startDate: Yup.string().max(255).required('Start Date is required'),
+                endDate: Yup.string().max(255).required('End Date is required'),
+                volunteerNumber: Yup.string().max(255).required('Number of volunteers needed is required'),
+                ageRequirement: Yup.string().max(255).required('Age requirement is required'),
                 policy: Yup.boolean().oneOf([true], 'This field must be checked')
               })
             }
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate('/ngo', { replace: true });
             }}
           >
             {({
@@ -71,45 +84,68 @@ const VolunteerRequestForm = () => {
               values
             }) => (
               <form onSubmit={handleSubmit}>
-                <Box mb={3}>
+                <Box mt={3} mb={3}>
                   <Typography
                     color="textPrimary"
                     variant="h2"
                   >
-                    Create new account
+                    Volunteer Service Request Form
                   </Typography>
+                </Box>
+                <Box mt={3}>
                   <Typography
                     color="textSecondary"
-                    gutterBottom
-                    variant="body2"
+                    variant="h3"
                   >
-                    Use your email to create new account
+                    Program Overview
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(touched.firstName && errors.firstName)}
+                  error={Boolean(touched.ngoName && errors.ngoName)}
                   fullWidth
-                  helperText={touched.firstName && errors.firstName}
-                  label="First name"
+                  helperText={touched.ngoName && errors.ngoName}
+                  label="NGO"
                   margin="normal"
-                  name="firstName"
+                  name="ngoName"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.firstName}
+                  value={values.ngoName}
                   variant="outlined"
                 />
                 <TextField
-                  error={Boolean(touched.lastName && errors.lastName)}
+                  error={Boolean(touched.programName && errors.programName)}
                   fullWidth
-                  helperText={touched.lastName && errors.lastName}
-                  label="Last name"
+                  helperText={touched.programName && errors.programName}
+                  label="Program Name"
                   margin="normal"
-                  name="lastName"
+                  name="programName"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.lastName}
+                  value={values.programName}
                   variant="outlined"
                 />
+                <TextField
+                  error={Boolean(touched.programObjective && errors.programObjective)}
+                  fullWidth
+                  helperText={touched.programObjective && errors.programObjective}
+                  label="Program Objective"
+                  margin="normal"
+                  name="programObjective"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  multiline
+                  rows={5}
+                  value={values.programObjective}
+                  variant="outlined"
+                />
+                <Box mt={3}>
+                  <Typography
+                    color="textSecondary"
+                    variant="h3"
+                  >
+                    Key Contact Person for Service
+                  </Typography>
+                </Box>
                 <TextField
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
@@ -124,16 +160,114 @@ const VolunteerRequestForm = () => {
                   variant="outlined"
                 />
                 <TextField
-                  error={Boolean(touched.password && errors.password)}
+                  error={Boolean(touched.phoneNumber && errors.phoneNumber)}
                   fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
+                  helperText={touched.phoneNumber && errors.phoneNumber}
+                  label="Phone Number"
                   margin="normal"
-                  name="password"
+                  name="phoneNumber"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  type="password"
-                  value={values.password}
+                  type="number"
+                  value={values.phoneNumber}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(touched.title && errors.title)}
+                  fullWidth
+                  helperText={touched.title && errors.title}
+                  label="Title"
+                  margin="normal"
+                  name="title"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.title}
+                  variant="outlined"
+                />
+                <Box mt={3}>
+                  <Typography
+                    color="textSecondary"
+                    variant="h3"
+                  >
+                    Service Activity Details
+                  </Typography>
+                </Box>
+                <TextField
+                  error={Boolean(touched.location && errors.location)}
+                  fullWidth
+                  helperText={touched.location && errors.location}
+                  label="Location of service activity"
+                  margin="normal"
+                  name="location"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.location}
+                  variant="outlined"
+                />
+                <Box mt={3}>
+                  <Typography
+                    color="textSecondary"
+                    variant="h4"
+                  >
+                    Start Date and Time
+                  </Typography>
+                </Box>
+                <TextField
+                  error={Boolean(touched.startDateTime && errors.startDateTime)}
+                  fullWidth
+                  helperText={touched.startDateTime && errors.startDateTime}
+                  margin="normal"
+                  name="startDateTime"
+                  type="datetime-local"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.startDateTime}
+                  variant="outlined"
+                />
+                <Box mt={3}>
+                  <Typography
+                    color="textSecondary"
+                    variant="h4"
+                  >
+                    End Date and Time
+                  </Typography>
+                </Box>
+                <TextField
+                  error={Boolean(touched.endDateTime && errors.endDateTime)}
+                  fullWidth
+                  helperText={touched.endDateTime && errors.endDateTime}
+                  margin="normal"
+                  name="endDateTime"
+                  type="datetime-local"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.endDateTime}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(touched.volunteerNumber && errors.volunteerNumber)}
+                  fullWidth
+                  helperText={touched.volunteerNumber && errors.volunteerNumber}
+                  label="Number of volunteers needed"
+                  margin="normal"
+                  name="volunteerNumber"
+                  type="number"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.volunteerNumber}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(touched.ageRequirement && errors.ageRequirement)}
+                  fullWidth
+                  helperText={touched.ageRequirement && errors.ageRequirement}
+                  label="Age Requirement"
+                  margin="normal"
+                  name="ageRequirement"
+                  type="number"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.ageRequirement}
                   variant="outlined"
                 />
                 <Box
@@ -153,7 +287,7 @@ const VolunteerRequestForm = () => {
                     I have read the
                     {' '}
                     <Link
-                      color="primary"
+                      color="blue"
                       component={RouterLink}
                       to="#"
                       underline="always"
@@ -177,21 +311,22 @@ const VolunteerRequestForm = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign up now
+                    Submit
                   </Button>
                 </Box>
                 <Typography
                   color="textSecondary"
                   variant="body1"
                 >
-                  Have an account?
+                  Want to make a skills-based volunteer request?
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/login"
+                    to="/ngo/skills"
                     variant="h6"
+                    color="blue"
                   >
-                    Sign in
+                    Click here!
                   </Link>
                 </Typography>
               </form>

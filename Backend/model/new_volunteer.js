@@ -3,83 +3,83 @@ const mongoose = require("mongoose");
 const NewVolunteerSchema = mongoose.Schema({
   ContactID:{
     type: String,
-    required: true
+    required: false
   },
   Salutation:{
     type: String,
-    required: true
+    required: false
   },
   FirstName:{
     type: String,
-    required: true
+    required: false
   },
   LastName:{
     type: String,
-    required: true
+    required: false
   },
   HOHKNewsletterOptin:{
     type: Number,
-    required: False
+    required: false
   },
   Title:{
     type: String,
-    required: true
+    required: false
   },
   ContactType:{
       tpye: String,
-      required: true
+      required: false
   },
   Employer:{
     type: String,
-    required: true
+    required: false
   },
   Age:{
     type: Number,
-    required: true
+    required: false
   },
   HoursServed:{
-    tpye: Number,
-    required: true
+    type: Number,
+    required: false
   },
   Email:{
     type: String,
-    required: true
+    required: false
   },
   MobilePhone:{
-    tpye: Number,
-    required: true
+    type: Number,
+    required: false
   },
   PrimaryStreet:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   },
   PrimaryCity:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   },
   PrimaryState:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   },
   PrimaryZip:{
-    tpye: Number,
-    required: true
+    type: Number,
+    required: false
   },
   Gender:{
     type: String,
-    required: true
+    required: false
   },
   EthnicityRace:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   },
   VolunteerType:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   },
   OrganizationName:{
-    tpye: String,
-    required: true
+    type: String,
+    required: false
   }
 });
 
