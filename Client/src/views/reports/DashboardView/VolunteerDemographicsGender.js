@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -7,11 +7,10 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Typography,
-  colors,
   makeStyles,
-  useTheme, Button
+  Button
 } from '@material-ui/core';
+import { useHttpClient } from "src/hooks/http-hook";
 import { ResponsivePie } from '@nivo/pie';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
@@ -24,28 +23,44 @@ const useStyles = makeStyles(() => ({
 
 const VolunteerDemographicsGender = ({ className, ...rest }) => {
   const classes = useStyles();
-  const theme = useTheme();
+  const { isLoading, error, sendRequest } = useHttpClient();
 
-  const data = [
-    {
-      "id": "Female",
-      "label": "Female",
-      "value": 63,
-      "color": "hsl(3,100%,83%)"
-    },
-    {
-      "id": "Male",
-      "label": "Male",
-      "value": 55,
-      "color": "hsl(200,66%,56%)"
-    },
-    {
-      "id": "Others",
-      "label": "Others",
-      "value": 28,
-      "color": "hsl(272,7%,41%)"
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/data/genderChart`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setData(() => {
+            const genders = [];
+            for (let key in responseData) {
+              const obj = {};
+              obj["id"] = key;
+              obj["label"] = key;
+              obj["value"] = responseData[key];
+              genders.push(obj);
+            }
+            return genders;
+          });
+        }
+        console.log(responseData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (data.length === 0) {
+      getData();
     }
-  ];
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Card

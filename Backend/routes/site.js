@@ -4,9 +4,143 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const authV = require("../middleware/authV");
 const NGO = require("../model/NGO");
 const User = require("../model/user");
 const Opening = require("../model/opening")
+const EventSignUp = require("../model/SignUpEvent")
+
+
+router.get("/getUser", authV, async (req, res) => {
+    try {
+      // request.user is getting fetched from Middleware after token authentication
+      const person = await User.findById(req.person.id);
+      res.json(person);
+      //console.log(user);
+      //console.log(type(user));
+    } catch (e) {
+      res.send({ message: "Error in Fetching user" });
+    }
+  });
+
+router.get("/eventRegisterers", async (req, res) => {
+    const {
+        EventID
+    } = req.body;
+    try {
+      let y = await EventSignUp.find({
+          EventID
+      });
+      //console.log(y);
+      if (y.length == 0){
+          res.send({"message" : "No registerers!"})
+      }
+      else{
+          var output = [];
+          for (element in y){
+              output.push(y[element]["Email"]);
+          }
+          res.json(output);
+        }
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing registerers data" })
+      }
+    } 
+  );
+
+router.post("/eventSignUp", authV, async (req, res) => {
+    const person = await User.findById(req.person.id);
+    const Email = person.Email;
+    //console.log(person);
+    const {
+        EventID
+     } = req.body;
+    try {
+        let br = await Opening.findOne({
+            EventID
+          });
+
+        if( br.Needed <= br.CurrentlySignedUp){
+            return res.status(400).json({
+                msg: "Maximum threshold reached!"
+              });
+        }
+
+        let a = await EventSignUp.find({
+            EventID
+        });
+        //console.log(a);
+        if (a.length != 0) {
+            return res.status(400).json({
+              msg: "Already registered"
+            });
+          }
+      let registration = new EventSignUp({
+        Email,
+        EventID
+      });
+      //console.log(event);
+      await registration.save();
+
+      try{
+        let ar = await Opening.findOne({
+            EventID
+          });
+        const newSignedUp = ar.CurrentlySignedUp + 1;
+        Opening.updateOne({ EventID: EventID }, { CurrentlySignedUp: newSignedUp }, function (
+            err, result) {
+            if (err) {
+              res.send(err);
+              console.log(err);
+            }
+            else {
+                res.send({ message: "Registration Successful!" });
+            }
+          });
+      } catch(e){
+        res.send({ message: "Unable to update currentlySignedUp!" });
+      }
+    }
+    catch (e) {
+      console.log(e);
+      res.send({ message: "Unable to register!" });
+    }
+  });
+
+router.get("/upcomingEvents", async (req, res) => {
+    try {
+      let x = await Opening.find();
+      return res.json(x);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing events data" })
+      }
+    } 
+  );
+ router.get("/allNGOs", async (req, res) => {
+    try {
+      let y = await NGO.find();
+      return res.json(y);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing NGOs data" })
+      }
+    } 
+  );
+
+router.get("/allVolunteers", async (req, res) => {
+    try {
+      let z = await User.find();
+      //console.log(z);
+      return res.json(z);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing all volunteers" })
+      }
+    } 
+  );
+
 
 router.post("/createOpening", auth, async (req, res) => {
     const ngo = await NGO.findById(req.ngo.id);

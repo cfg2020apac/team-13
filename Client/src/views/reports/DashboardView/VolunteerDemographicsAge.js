@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useHttpClient } from "src/hooks/http-hook";
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -7,10 +8,8 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Typography,
-  colors,
   makeStyles,
-  useTheme, Button
+  Button
 } from '@material-ui/core';
 import { ResponsivePie } from '@nivo/pie';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -24,28 +23,49 @@ const useStyles = makeStyles(() => ({
 
 const VolunteerDemographicsAge = ({ className, ...rest }) => {
   const classes = useStyles();
-  const theme = useTheme();
+  const { isLoading, error, sendRequest } = useHttpClient();
 
-  const data = [
-    {
-      "id": "below 25",
-      "label": "below 25",
-      "value": 63,
-      "color": "hsl(272,7%,41%)"
-    },
-    {
-      "id": "25-40",
-      "label": "25-40",
-      "value": 55,
-      "color": "hsl(47,53%,92%)"
-    },
-    {
-      "id": "above 40",
-      "label": "above 40",
-      "value": 90,
-      "color": "hsl(3,83%,95%)"
+  const [data, setData] = useState([]);
+  const mappings = {
+    "0-17": "Below 18",
+    "18-24": "18-24",
+    "25-39": "25-39",
+    "40-199": "Above 39"
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/data/ageCount`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setData(() => {
+            const ages = [];
+            for (let key in responseData) {
+              const obj = {};
+              obj["id"] = mappings[key];
+              obj["label"] = mappings[key];
+              obj["value"] = responseData[key];
+              ages.push(obj);
+            }
+            return ages;
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (data.length === 0) {
+      getData();
     }
-  ];
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Card
@@ -76,7 +96,7 @@ const VolunteerDemographicsAge = ({ className, ...rest }) => {
             borderWidth={2}
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
             enableRadialLabels={false}
-            sliceLabel={function(e){return e.id+" ("+e.value+")"}}
+            sliceLabel={function(e){return e.value}}
             slicesLabelsSkipAngle={4}
             slicesLabelsTextColor="#333333"
             animate={true}

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHttpClient } from "src/hooks/http-hook";
 import {
   Box,
   Container,
@@ -25,31 +26,56 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductList = () => {
   const classes = useStyles();
-  const [events] = useState(data);
+  const [events, setEvents] = useState([]);
+  const { isLoading, error, sendRequest } = useHttpClient();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/web/upcomingEvents`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setEvents(responseData);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (events.length === 0) {
+      getData();
+    }
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Page
       className={classes.root}
-      title="Products"
+      title="Events"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar data={events}/>
         <Box mt={3}>
           <Grid
             container
             spacing={3}
           >
-            {events.map((product) => (
+            {events.map((event) => (
               <Grid
                 item
-                key={product.id}
+                key={event.id}
                 lg={4}
                 md={6}
                 xs={12}
               >
                 <EventCard
                   className={classes.productCard}
-                  product={product}
+                  event={event}
                 />
               </Grid>
             ))}

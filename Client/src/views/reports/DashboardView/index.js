@@ -1,12 +1,10 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
 import {
   Container,
   Grid,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import { useHttpClient } from "src/hooks/http-hook";
 import PercentageSignups from './PercentageSignups';
 import TotalVolunteers from './TotalVolunteers';
 import EventTypes from "./EventTypes";
@@ -28,49 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-  const { isLoading, error, sendRequest } = useHttpClient();
-
-  // const [dataSets, setDataSets] = useState([]);
-  // const [currentData, setCurrentData] = useState({
-  //   timestamp: "",
-  //   ecg_data: [],
-  // });
-  // const [chartData, setChartData] = useState();
-  //
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const responseData = await sendRequest(
-  //         //  TODO: CHANGE BACK TO PROD
-  //         `${process.env.REACT_APP_PROD_URL}/data/ecg`,
-  //         "GET",
-  //         null,
-  //         {}
-  //       );
-  //
-  //       if (responseData) {
-  //         const latestData = responseData.data[0];
-  //
-  //         setDataSets((prev) => {
-  //           prev = responseData.data;
-  //           return prev;
-  //         });
-  //
-  //         setCurrentData((prev) => {
-  //           prev = latestData;
-  //           prev.ecg_data = latestData.ecg_data;
-  //           return prev;
-  //         });
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //
-  //   if (currentData.ecg_data.length === 0) {
-  //     getData();
-  //   }
-  // }, [isLoading, currentData, sendRequest, setCurrentData, error]);
 
   return (
     <Page

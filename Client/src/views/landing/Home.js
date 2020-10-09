@@ -56,8 +56,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     marginBottom: theme.spacing(6),
     fontSize: 16,
+    paddingLeft: 10,
+    paddingRight: 10,
     border: '2px solid',
-  }
+  },
+  largeIcon: {
+    width: 80,
+    height: 80,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
 }));
 
 const Home = () => {
@@ -111,14 +119,29 @@ const Home = () => {
               display="flex"
               flexDirection="row"
             >
-              <IconButton className={classes.icon} color="secondary" size="medium">
-                <FacebookIcon />
+              <IconButton
+                target="_blank"
+                href="https://www.facebook.com/handsonhongkong"
+                className={classes.icon}
+                color="secondary"
+                size="medium">
+                <FacebookIcon className={classes.largeIcon}/>
               </IconButton>
-              <IconButton className={classes.icon} color="secondary" size="medium">
-                <InstagramIcon />
+              <IconButton
+                target="_blank"
+                href="https://www.instagram.com/handsonhongkong/"
+                className={classes.icon}
+                color="secondary"
+                size="medium">
+                <InstagramIcon  className={classes.largeIcon}/>
               </IconButton>
-              <IconButton className={classes.icon} color="secondary" size="medium">
-                <LinkedInIcon />
+              <IconButton
+                target="_blank"
+                href="https://www.linkedin.com/company/handson-hong-kong/"
+                className={classes.icon}
+                color="secondary"
+                size="medium">
+                <LinkedInIcon className={classes.largeIcon}/>
               </IconButton>
             </Box>
 

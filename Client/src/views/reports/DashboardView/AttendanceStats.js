@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {ThemeProvider} from "@nivo/core";
@@ -9,21 +9,25 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  useTheme,
+  Grid,
   makeStyles,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import { ResponsivePie } from '@nivo/pie';
-import { ResponsiveBar } from '@nivo/bar'
+import { useHttpClient } from "src/hooks/http-hook";
+import { ResponsiveBar } from '@nivo/bar';
+import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles(() => ({
-  root: {}
+  root: {},
+  page: {
+    alignItems: 'center',
+    textAlign: 'center',
+    paddingLeft: 100
+  }
 }));
 
 const AttendanceStats = ({ className, ...rest }) => {
   const classes = useStyles();
-  const theme = useTheme();
   const theme1 = {
     tooltip: {
       container: {
@@ -37,38 +41,49 @@ const AttendanceStats = ({ className, ...rest }) => {
     }
   };
 
-  let data = [
-    {
-      "Event": "6866",
-      "Needed": 200,
-      "Confirmed": 98,
-      "Attended": 80
-    },
-    {
-      "Event": "6867",
-      "Needed": 20,
-      "Confirmed": 15,
-      "Attended": 15
-    },
-    {
-      "Event": "6868",
-      "Needed": 60,
-      "Confirmed": 34,
-      "Attended": 23
-    },
-    {
-      "Event": "6869",
-      "Needed": 80,
-      "Confirmed": 79,
-      "Attended": 79
-    },
-    {
-      "Event": "6870",
-      "Needed": 40,
-      "Confirmed": 40,
-      "Attended": 37
+  const { isLoading, error, sendRequest } = useHttpClient();
+
+  const [masterData, setMasterData] = useState([]);
+  const [data, setData] = useState([]);
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
+  useEffect(() => {
+    setData(() => {
+      return masterData.slice((page-1)*10, page*10);
+    });
+  }, [page]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/data/attendanceChart`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setMasterData(() => {
+            return responseData;
+          });
+          setData(() => {
+            return responseData.slice(0, 10);
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (data.length === 0) {
+      getData();
     }
-    ];
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Card
@@ -154,6 +169,13 @@ const AttendanceStats = ({ className, ...rest }) => {
             />
           </ThemeProvider>
         </Box>
+          <Pagination
+            className={classes.page}
+            showFirstButton
+            showLastButton
+            count={masterData.length%10}
+            page={page}
+            onChange={handleChange} />
       </CardContent>
     </Card>
   );

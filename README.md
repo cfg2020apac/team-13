@@ -104,3 +104,18 @@ Return Type:
         Needed,
         AgeRequirement (optional)
 ```
+
+## 10. /web/upcomingEvents
+![](imgs/upcomingEvent.PNG) Array of json objects with all details of all registered events.
+
+## 11. /web/allVolunteers 
+![](imgs/allVolunteers.PNG) Array of json objects with all details of all registered volunteers.
+
+## 12. /web/allNGOs 
+![](imgs/allNGOs.PNG) Array of json objects with all details of all registered NGOs.
+
+## 13. /web/eventSignUp
+![](imgs/eventSignUp.PNG) Requires JWT to verify the volunteer authentication, the only parameter is the EventID which they are registering for. At the same time, it updates the CurrentlySignedUp field and increases it by 1, checks the edge case of max threhold being reached as well.
+
+## 14. /web/eventRegisterers
+![](imgs/eventRegisterers.PNG) Returns an array with all emailIDs which have registered for the specific event.

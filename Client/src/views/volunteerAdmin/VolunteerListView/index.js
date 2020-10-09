@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import { useHttpClient } from "src/hooks/http-hook";
 import {
   Box,
   Container,
@@ -20,7 +21,34 @@ const useStyles = makeStyles((theme) => ({
 
 const VolunteerListView = () => {
   const classes = useStyles();
-  const [volunteers] = useState(data);
+  const [volunteers, setVolunteers] = useState([]);
+  const { isLoading, error, sendRequest } = useHttpClient();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/web/allVolunteers`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setVolunteers(() => {
+            return responseData;
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (volunteers.length === 0) {
+      getData();
+    }
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Page
@@ -28,7 +56,7 @@ const VolunteerListView = () => {
       title="Volunteers"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar data={volunteers}/>
         <Box mt={3}>
           <Results volunteers={volunteers} />
         </Box>

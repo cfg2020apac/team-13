@@ -18,8 +18,7 @@ import moment from 'moment';
 const useStyles = makeStyles({
   root: {
     minWidth: 245,
-    margin: '10px',
-    wordWrap: 'break-word'
+    margin: '10px'
   },
   body: {
     display: 'flex',
@@ -31,13 +30,16 @@ const useStyles = makeStyles({
     fontSize: 20,
   },
   pos: {
-    fontSize: 15,
-    marginBottom: 10,
+    marginBottom: 5,
   },
 });
 
-const EventDetails = ({className, ...rest}) => {
+const OpportunitiesDetails = ({className, ...rest}) => {
   const classes = useStyles();
+
+  const registerEvent = () => {
+    console.log("registered")
+  }
 
   return (
     <>
@@ -64,7 +66,7 @@ const EventDetails = ({className, ...rest}) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button color="secondary" size="small">View More</Button>
+                <Button color="secondary" size="large" onClick={() => registerEvent()}>Apply</Button>
               </CardActions>
             </Card>
             </>
@@ -75,4 +77,4 @@ const EventDetails = ({className, ...rest}) => {
   )
 }
 
-export default EventDetails
+export default OpportunitiesDetails

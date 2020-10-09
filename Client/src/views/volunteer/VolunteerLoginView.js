@@ -76,7 +76,7 @@ const VolunteerLoginView = () => {
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
+                    Sign in on the volunteer platform
                   </Typography>
                 </Box>
                 <Grid
@@ -175,6 +175,7 @@ const VolunteerLoginView = () => {
                     component={RouterLink}
                     to="/volunteer/register"
                     variant="h6"
+                    color="secondary"
                   >
                     Sign up
                   </Link>

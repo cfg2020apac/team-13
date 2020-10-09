@@ -36,7 +36,7 @@ const Results = ({ className, volunteers, ...rest }) => {
     let newSelectedVolunteerIds;
 
     if (event.target.checked) {
-      newSelectedVolunteerIds = volunteers.map((volunteer) => volunteer.id);
+      newSelectedVolunteerIds = volunteers.map((volunteer) => volunteer._id);
     } else {
       newSelectedVolunteerIds = [];
     }
@@ -103,10 +103,7 @@ const Results = ({ className, volunteers, ...rest }) => {
                   Location
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  Registration date
+                  Mobile
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -114,13 +111,13 @@ const Results = ({ className, volunteers, ...rest }) => {
               {volunteers.slice(0, limit).map((volunteer) => (
                 <TableRow
                   hover
-                  key={volunteer.id}
-                  selected={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
+                  key={volunteer._id}
+                  selected={selectedVolunteerIds.indexOf(volunteer._id) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, volunteer.id)}
+                      checked={selectedVolunteerIds.indexOf(volunteer._id) !== -1}
+                      onChange={(event) => handleSelectOne(event, volunteer._id)}
                       value="true"
                     />
                   </TableCell>
@@ -133,27 +130,24 @@ const Results = ({ className, volunteers, ...rest }) => {
                         className={classes.avatar}
                         src={volunteer.avatarUrl}
                       >
-                        {getInitials(volunteer.name)}
+                        {getInitials(volunteer.Name)}
                       </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                        {volunteer.name}
+                        {volunteer.Name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {volunteer.email}
+                    {volunteer.Email}
                   </TableCell>
                   <TableCell>
-                    {`${volunteer.address.city}, ${volunteer.address.state}, ${volunteer.address.country}`}
+                    {`${volunteer.Location}`}
                   </TableCell>
                   <TableCell>
-                    {volunteer.phone}
-                  </TableCell>
-                  <TableCell>
-                    {moment(volunteer.createdAt).format('DD/MM/YYYY')}
+                    {volunteer.Mobile}
                   </TableCell>
                 </TableRow>
               ))}

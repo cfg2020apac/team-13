@@ -190,6 +190,7 @@ const VolunteerRegisterView = () => {
                     component={RouterLink}
                     to="/volunteer/login"
                     variant="h6"
+                    color="secondary"
                   >
                     Sign in
                   </Link>

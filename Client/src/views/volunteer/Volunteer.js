@@ -20,6 +20,7 @@ const user = {
   country: 'USA',
   jobTitle: 'Senior Developer',
   name: 'Katarina Smith',
+  volunteerHours: 3,
   timezone: 'GTM-7'
 };
 
@@ -69,12 +70,18 @@ const Volunteer = ({ className, ...rest }) => {
           >
             {`${moment().format('hh:mm A')} ${user.timezone}`}
           </Typography>
+          <Typography
+            color="textSecondary"
+            variant="body1"
+          >
+            Volunteer Hours: {user.volunteerHours}
+          </Typography>
         </Box>
       </CardContent>
       <Divider />
       <CardActions>
         <Button
-          color="primary"
+          color="secondary"
           fullWidth
           variant="text"
         >

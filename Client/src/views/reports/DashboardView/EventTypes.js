@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useHttpClient } from "src/hooks/http-hook";
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {ThemeProvider} from "@nivo/core";
@@ -9,11 +10,9 @@ import {
     CardContent,
     CardHeader,
     Divider,
-    useTheme,
     makeStyles,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { ResponsivePie } from '@nivo/pie';
 
 const useStyles = makeStyles(() => ({
@@ -22,8 +21,8 @@ const useStyles = makeStyles(() => ({
 
 const EventTypes = ({ className, ...rest }) => {
     const classes = useStyles();
-    const theme = useTheme();
-    const theme1 = {
+  const { isLoading, error, sendRequest } = useHttpClient();
+  const theme1 = {
         tooltip: {
             container: {
                 background: 'white',
@@ -36,38 +35,54 @@ const EventTypes = ({ className, ...rest }) => {
         }
     };
 
-    const data = [
-        {
-            "id": "Integrated",
-            "label": "Integrated",
-            "value": 90,
-            "color": "hsl(41, 70%, 50%)"
-        },
-        {
-            "id": "Hunger & homelessness",
-            "label": "Hunger & homelessness",
-            "value": 165,
-            "color": "hsl(311, 70%, 50%)"
-        },
-        {
-            "id": "Environmental education",
-            "label": "Environmental education",
-            "value": 524,
-            "color": "hsl(253, 70%, 50%)"
-        },
-        {
-            "id": "Children and youth",
-            "label": "Children and youth",
-            "value": 241,
-            "color": "hsl(261, 70%, 50%)"
-        },
-        {
-            "id": "Elderly",
-            "label": "Elderly",
-            "value": 458,
-            "color": "hsl(72, 70%, 50%)"
+  const [data, setData] = useState([]);
+  const mappings = {
+    "Integrated": "Integrated",
+    "Hunger & homelessness": "Hunger & homelessness",
+    "Environmental education": "Environmental education",
+    "Children and youth": "Children & youth",
+    "Hungers and homeless": "Hunger & homelessness",
+    "Elderly": "Elderly",
+    "People with mental illness": "People with mental illness",
+    "Refugees and asylum seekers": "Refugees and asylum seekers",
+    "Other": "Other",
+    "Animals": "Animals",
+    "Women": "Women"
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/data/typeChart`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setData(() => {
+            const ages = [];
+            for (let key in responseData) {
+              const obj = {};
+              obj["value"] = obj["label"]? obj["label"] + responseData[key] : responseData[key];
+              obj["id"] = mappings[key];
+              obj["label"] = mappings[key];
+              ages.push(obj);
+            }
+            return ages;
+          });
         }
-    ];
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (data.length === 0) {
+      getData();
+    }
+  }, [isLoading, sendRequest, error]);
 
     return (
         <Card
@@ -96,14 +111,14 @@ const EventTypes = ({ className, ...rest }) => {
                     <ResponsivePie
                         theme={theme1}
                         data={data}
-                        margin={{ top: 40, right: 80, bottom: 80, left: 90 }}
+                        margin={{ top: 40, right: 10, bottom: 80, left: 120 }}
                         innerRadius={0.5}
                         padAngle={0.7}
                         cornerRadius={3}
                         colors={{ scheme: 'pastel1' }}
                         borderWidth={2}
-                        borderColor={{ from: 'color', modifiers: [ [ 'darker', '2' ] ] }}
-                        radialLabelsSkipAngle={10}
+                        borderColor={{ from: 'color' }}
+                        radialLabelsSkipAngle={2}
                         radialLabelsTextXOffset={6}
                         radialLabelsTextColor="#333333"
                         radialLabelsLinkOffset={0}
@@ -120,8 +135,8 @@ const EventTypes = ({ className, ...rest }) => {
                             {
                                 anchor: 'left',
                                 direction: 'column',
-                                translateX: -80,
-                                translateY: -120,
+                                translateX: -120,
+                                translateY: -80,
                                 itemWidth: 100,
                                 itemHeight: 22,
                                 itemTextColor: '#999',
