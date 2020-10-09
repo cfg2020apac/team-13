@@ -155,7 +155,7 @@ const LoginView = () => {
                 />
                 <Box my={2}>
                   <Button
-                    color="primary"
+                    color="secondary"
                     disabled={isSubmitting}
                     fullWidth
                     size="large"
@@ -165,20 +165,6 @@ const LoginView = () => {
                     Sign in now
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                  >
-                    Sign up
-                  </Link>
-                </Typography>
               </form>
             )}
           </Formik>

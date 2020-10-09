@@ -10,8 +10,9 @@ import NgoListView from "./views/ngoAdmin/NgoListView";
 import DashboardView from 'src/views/reports/DashboardView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/event/EventListView';
-import LoginView from 'src/views/auth/AdminLoginView';
+import LoginView from 'src/views/auth/LoginView';
 import RegisterView from 'src/views/auth/RegisterView';
+import AdminLoginView from 'src/views/admin/AdminLoginView';
 import NgoLoginView from 'src/views/ngo/NgoLoginView';
 import NgoRegisterView from 'src/views/ngo/NgoRegisterView';
 import VolunteerLoginView from 'src/views/volunteer/VolunteerLoginView';
@@ -32,6 +33,13 @@ const routes = [
       { path: 'events', element: <ProductListView /> },
       { path: 'ngos', element: <NgoListView /> },
       { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
+  {
+    path: 'app',
+    element: <MainLayout />,
+    children: [
+      { path: 'login', element: <AdminLoginView /> },
     ]
   },
   {

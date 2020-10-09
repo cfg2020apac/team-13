@@ -3,9 +3,61 @@ const { check, validationResult } = require("express-validator/check");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-
+const auth = require("../middleware/auth");
 const NGO = require("../model/NGO");
 const User = require("../model/user");
+const Opening = require("../model/opening")
+
+router.post("/createOpening", auth, async (req, res) => {
+    const ngo = await NGO.findById(req.ngo.id);
+    //console.log(ngo);
+    const {
+        Title,
+        Description,
+        Location,
+        Start,
+        End,
+        Needed,
+        AgeRequirement
+    } = req.body;
+    try {
+        let a = await Opening.findOne({
+            Title
+          });
+        //console.log(a);
+        if (a) {
+            return res.status(400).json({
+              msg: "Opening Already Exists"
+            });
+          }
+      var x = Math.random().toString(36).substring(7);
+      const EventID = x;
+      const NGOName = ngo.Name;
+      const CurrentlySignedUp = 0;
+      //console.log(x);
+      //console.log(Start);
+      //console.log(End);
+      let event = new Opening({
+        EventID,
+        NGOName,
+        Title,
+        Description,
+        Location,
+        Start,
+        End,
+        Needed,
+        AgeRequirement,
+        CurrentlySignedUp
+      });
+      //console.log(event);
+      await event.save();
+      res.send({ message: "Created Opening!" });
+    }
+    catch (e) {
+      console.log(e);
+      res.send({ message: "Unable to save posting." });
+    }
+  });
 
 router.post("/NGOsignup", async (req, res) => {     
     const {
