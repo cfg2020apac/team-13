@@ -10,6 +10,33 @@ const volunteerData = require("../model/volunteer_data");
 const newVolunteerData = require("../model/new_volunteer");
 const e = require("express");
 
+router.get("/genderChart", async (req, res) => {
+    try {
+      let x = await newVolunteerData.find();
+      //console.log(x);
+      var output = {"Male" : 0, "Female" : 0, "Others" : 0};
+
+      for (var element in x){
+        if(x[element]["Gender"] == 'Male'){
+            output["Male"] += 1;
+        }
+        else if (x[element]["Gender"] == 'Female'){
+            output["Female"] += 1;
+        }
+        else{
+           output['Others'] += 1; 
+        }
+      }
+      //console.log(output);
+      res.json(output);
+  }
+    catch (e) {
+      console.log(e);
+      res.send({ message: "Error in GETing types of Areas." })
+    }
+});
+
+
 router.get("/attendanceChart", async (req, res) => {
     try {
       let x = await handsOnData.find();
