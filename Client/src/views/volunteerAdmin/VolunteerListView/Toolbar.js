@@ -29,15 +29,27 @@ const Toolbar = ({ data, className, ...rest }) => {
   const columns = [
     {
       label: "Name",
-      value: "name"
+      value: "Name"
+    },
+    {
+      label: "Age",
+      value: "Age"
+    },
+    {
+      label: "Gender",
+      value: "Gender"
     },
     {
       label: "Email",
-      value: "email"
+      value: "Email"
     },
     {
-      label: "Phone",
-      value: "phone"
+      label: "Mobile",
+      value: "Mobile"
+    },
+    {
+      label: "Location",
+      value: "Location"
     }
   ];
 
