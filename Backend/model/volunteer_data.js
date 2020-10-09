@@ -5,30 +5,63 @@ const VolunteerSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  name:{
+  Last_Name:{
     type: String,
     required: true
   },
-  mobilePhone:{
+  Mobile_Phone:{
     type: Number,
     required: true
   },
-  OrganizationServed:{
+  Organization_Name:{
     type: String,
     required: true
   },
-  Employer: {
+  Email_Clean_Out: {
     type: String,
     required: true
   },
-  HoursServed:{
-    type: Number,
+  Connection_Id:{
+    type: String,
+    required: true
+  },
+  Attendance_Status:{
+      tpye: String,
+      required: true
+  },
+  Employer:{
+    tpye: String,
+    required: true
+  },
+  Attendance_Status:{
+    tpye: String,
+    required: true
+  },
+  Volunteer_Opportunity_Name:{
+    tpye: String,
+    required: true
+  },
+  Organization_Name:{
+    tpye: String,
+    required: true
+  },
+  Type:{
+    tpye: String,
+    required: true
+  },
+  Contact_ID:{
+    type: String,
     required: true
   },
   Age:{
-      type: Number,
-      required: true
-  }
+    type: Number,
+    required: true
+  },
+  Hours_Served:{
+    type: Number,
+    required: true
+  },
+
 });
 
 // export model user with UserSchema

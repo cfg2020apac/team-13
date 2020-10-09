@@ -1,23 +1,90 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
+  Badge,
+  Box,
+  Hidden,
+  IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
+  Link,
+  Grid,
+  Button
 } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
+import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 
-const useStyles = makeStyles(({
+import {
+  AlertCircle as AlertCircleIcon,
+  BarChart as BarChartIcon, Lock as LockIcon, Settings as SettingsIcon,
+  ShoppingBag as ShoppingBagIcon,
+  User as UserIcon, UserPlus as UserPlusIcon,
+  Users as UsersIcon
+} from "react-feather";
+
+const useStyles = makeStyles(() => ({
   root: {},
-  toolbar: {
-    height: 64
+  avatar: {
+    width: 60,
+    height: 60
   }
 }));
 
-const TopBar = ({ className, ...rest }) => {
+const items = [
+  {
+    href: '/app/dashboard',
+    icon: BarChartIcon,
+    title: 'Dashboard'
+  },
+  {
+    href: '/app/customers',
+    icon: UsersIcon,
+    title: 'Customers'
+  },
+  {
+    href: '/app/products',
+    icon: ShoppingBagIcon,
+    title: 'Products'
+  },
+  {
+    href: '/app/account',
+    icon: UserIcon,
+    title: 'Account'
+  },
+  {
+    href: '/app/settings',
+    icon: SettingsIcon,
+    title: 'Settings'
+  },
+  {
+    href: '/login',
+    icon: LockIcon,
+    title: 'Login'
+  },
+  {
+    href: '/register',
+    icon: UserPlusIcon,
+    title: 'Register'
+  },
+  {
+    href: '/404',
+    icon: AlertCircleIcon,
+    title: 'Error'
+  }
+];
+
+const TopBar = ({
+  className,
+  onMobileNavOpen,
+  ...rest
+}) => {
   const classes = useStyles();
+  const [notifications] = useState([]);
 
   return (
     <AppBar
@@ -25,17 +92,52 @@ const TopBar = ({ className, ...rest }) => {
       elevation={0}
       {...rest}
     >
-      <Toolbar className={classes.toolbar}>
+      <Toolbar>
         <RouterLink to="/">
           <Logo />
         </RouterLink>
+        <Box p={3} flexDirection="row">
+          {items.map((item) => (
+              <Button
+                href={item.href}
+                key={item.title}
+                color="inherit"
+              >
+                {item.title}
+              </Button>
+          ))}
+        </Box>
+        <Box flexGrow={1} />
+        <Hidden mdDown>
+          <IconButton color="inherit">
+            <Badge
+              badgeContent={notifications.length}
+              color="primary"
+              variant="dot"
+            >
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <InputIcon />
+          </IconButton>
+        </Hidden>
+        <Hidden lgUp>
+          <IconButton
+            color="inherit"
+            onClick={onMobileNavOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
       </Toolbar>
     </AppBar>
   );
 };
 
 TopBar.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  onMobileNavOpen: PropTypes.func
 };
 
 export default TopBar;
