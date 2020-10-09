@@ -37,9 +37,9 @@ const useStyles = makeStyles(() => ({
 
 const items = [
   {
-    href: '/app/account',
+    href: '/',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Home'
   },
   {
     href: '/login',

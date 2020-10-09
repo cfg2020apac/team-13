@@ -68,8 +68,8 @@ const NgoDetails = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="Available events requested"
           title="Events"
+          subheader="Available events requested"
         />
         <Divider />
         <CardContent>
