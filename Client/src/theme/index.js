@@ -19,6 +19,12 @@ const theme = createMuiTheme({
       primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600],
       other: colors.grey[500]
+    },
+    card: {
+      main: colors.teal[300]
+    },
+    program: {
+      main: colors.grey[500]
     }
   },
   shadows,
