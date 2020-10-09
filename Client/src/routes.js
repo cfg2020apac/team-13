@@ -1,17 +1,17 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import DashboardLayout from 'layouts/DashboardLayout';
-import MainLayout from 'layouts/MainLayout';
-import AccountView from 'views/account/AccountView';
-import CustomerListView from 'views/customer/CustomerListView';
-import DashboardView from 'views/reports/DashboardView';
-import LoginView from 'views/auth/LoginView';
-import NotFoundView from 'views/errors/NotFoundView';
-import ProductListView from 'views/product/ProductListView';
-import RegisterView from 'views/auth/RegisterView';
-import SettingsView from 'views/settings/SettingsView';
-import VolunteerRequestForm from 'views/ngo/VolunteerRequestForm';
-import Home from 'views/landing/Home';
+import DashboardLayout from 'src/layouts/DashboardLayout';
+import MainLayout from 'src/layouts/MainLayout';
+import AccountView from 'src/views/account/AccountView';
+import CustomerListView from 'src/views/customer/CustomerListView';
+import DashboardView from 'src/views/reports/DashboardView';
+import LoginView from 'src/views/auth/LoginView';
+import NotFoundView from 'src/views/errors/NotFoundView';
+import ProductListView from 'src/views/product/ProductListView';
+import RegisterView from 'src/views/auth/RegisterView';
+import SettingsView from 'src/views/settings/SettingsView';
+import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
+import Home from 'src/views/landing/Home';
 
 const routes = [
   {
