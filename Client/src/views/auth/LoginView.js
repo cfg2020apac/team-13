@@ -94,7 +94,7 @@ const LoginView = () => {
             </Card>
           </ButtonBase>
           <ButtonBase
-              href="/app/login"
+              href="/admin/login"
               className={classes.cardAction}
           >
             <Card className={classes.card}>

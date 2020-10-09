@@ -76,7 +76,7 @@ const NgoLoginView = () => {
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
+                    Sign in on the NGO platform
                   </Typography>
                 </Box>
                 <Grid

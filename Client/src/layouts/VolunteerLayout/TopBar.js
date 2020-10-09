@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
 
 const items = [
   {
-    href: '/volunteerAdmin',
+    href: '/volunteer',
     icon: UserIcon,
     title: 'Home'
   },
