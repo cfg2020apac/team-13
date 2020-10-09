@@ -4,9 +4,68 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const authV = require("../middleware/authV");
 const NGO = require("../model/NGO");
 const User = require("../model/user");
 const Opening = require("../model/opening")
+const EventSignUp = require("../model/SignUpEvent")
+
+router.get("/eventRegisterers", async (req, res) => {
+    const {
+        EventID
+    } = req.body;
+    try {
+      let y = await EventSignUp.find({
+          EventID
+      });
+      //console.log(y);
+      if (y.length == 0){
+          res.send({"message" : "No registerers!"})
+      }
+      else{
+          var output = [];
+          for (element in y){
+              output.push(y[element]["Email"]);
+          }
+          res.json(output);
+        }
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing registerers data" })
+      }
+    } 
+  );
+
+router.post("/eventSignUp", authV, async (req, res) => {
+    const person = await User.findById(req.person.id);
+    const Email = person.Email;
+    //console.log(person);
+    const {
+        EventID
+     } = req.body;
+    try {
+        let a = await EventSignUp.find({
+            EventID
+        });
+        //console.log(a);
+        if (a.length != 0) {
+            return res.status(400).json({
+              msg: "Already registered"
+            });
+          }
+      let registration = new EventSignUp({
+        Email,
+        EventID
+      });
+      //console.log(event);
+      await registration.save();
+      res.send({ message: "Registration Successful!" });
+    }
+    catch (e) {
+      console.log(e);
+      res.send({ message: "Unable to register!" });
+    }
+  });
 
 router.get("/upcomingEvents", async (req, res) => {
     try {
