@@ -75,8 +75,21 @@ Return Type:
 }
 ```
 
-## 6. /web/NGOsignup
+## 6. /data/ageCount
+![](imgs/ageCount.png) Returned data is as follows.
+```javascript
+{
+    "0-17": 0,
+    "18-24": 1,
+    "25-39": 8,
+    "40-199": 2
+}
+```
+
+
+## 7. /web/NGOsignup
 ![](imgs/ngosignup.PNG) Parameters are the ones defined by Javier at the slack channel. Returns a JWT on successful authentication.
 
-## 7. /web/NGOlogin
+## 8. /web/NGOlogin
 ![](imgs/ngologin.PNG) Just requires the email and password, returns a JWT on successful authentication. 
+
