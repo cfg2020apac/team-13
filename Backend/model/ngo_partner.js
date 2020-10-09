@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CrowdSchema = mongoose.Schema({
+const ngo_partner = mongoose.Schema({
   name:{
     type: String,
     required: true
