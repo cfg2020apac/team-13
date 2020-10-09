@@ -8,6 +8,40 @@ const NGO = require("../model/NGO");
 const User = require("../model/user");
 const Opening = require("../model/opening")
 
+router.get("/upcomingEvents", async (req, res) => {
+    try {
+      let x = await Opening.find();
+      return res.json(x);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing events data" })
+      }
+    } 
+  );
+ router.get("/allNGOs", async (req, res) => {
+    try {
+      let y = await NGO.find();
+      return res.json(y);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing NGOs data" })
+      }
+    } 
+  );
+
+router.get("/allVolunteers", async (req, res) => {
+    try {
+      let z = await User.find();
+      //console.log(z);
+      return res.json(z);
+      }
+      catch (e) {
+        res.send({ message: "Error in GETing all volunteers" })
+      }
+    } 
+  );
+
+
 router.post("/createOpening", auth, async (req, res) => {
     const ngo = await NGO.findById(req.ngo.id);
     //console.log(ngo);
