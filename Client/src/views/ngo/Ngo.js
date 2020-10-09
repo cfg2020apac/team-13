@@ -15,11 +15,11 @@ import {
 } from '@material-ui/core';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
+  avatar: '',
+  city: 'Hong Kong',
+  country: 'Hong Kong',
+  jobTitle: 'NGO',
+  name: 'Feeding Hong Kong',
   timezone: 'GTM-7'
 };
 
@@ -49,13 +49,15 @@ const Ngo = ({ className, ...rest }) => {
             className={classes.avatar}
             src={user.avatar}
           />
-          <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
-          >
-            {user.name}
-          </Typography>
+          <Box mt={2}>
+            <Typography
+              color="textPrimary"
+              gutterBottom
+              variant="h3"
+            >
+              {user.name}
+            </Typography>
+          </Box>
           <Typography
             color="textSecondary"
             variant="body1"
@@ -74,7 +76,7 @@ const Ngo = ({ className, ...rest }) => {
       <Divider />
       <CardActions>
         <Button
-          color="primary"
+          color="secondary"
           fullWidth
           variant="text"
         >

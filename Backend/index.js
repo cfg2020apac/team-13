@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.get("/HAHA", (req, res) => {  // To extract data
   res.json({ message: "Hello Friends!" });
 });
-app.use("/web", site)
-app.use("/data", mockdata);
+app.use("/web", site); 
+app.use("/data", mockdata); // Data Analytics
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);

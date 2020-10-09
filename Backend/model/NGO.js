@@ -13,11 +13,7 @@ const NGOSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  Age:{
-    type: Number,
-    required: true
-  },
-  Gender:{
+  Location:{
     type: String,
     required: true
   },
@@ -25,10 +21,6 @@ const NGOSchema = mongoose.Schema({
     type: Number,
     required: false
   },
-  Location:{
-    type: String,
-    required: true
-  }
 });
 
 // export model user with UserSchema

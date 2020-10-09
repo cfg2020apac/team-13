@@ -4,7 +4,118 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
+const NGO = require("../model/NGO");
 const User = require("../model/user");
+
+router.post("/NGOsignup", async (req, res) => {     
+    const {
+      Email,
+      Password,
+      Name,
+      Location,
+      Mobile
+    } = req.body;
+
+   try {
+        let ngo = await NGO.findOne({
+          Email
+        });
+        
+        if (ngo) {
+          return res.status(400).json({
+            msg: "NGO Already Exists"
+          });
+        }
+        // console.log("HERE, USER NOT EXISTING!");
+        ngo = new NGO({
+            Email,
+            Password,
+            Name,
+            Location,
+            Mobile
+        });
+        
+        const salt = await bcrypt.genSalt(10);
+        ngo.Password = await bcrypt.hash(Password, salt);
+
+        await ngo.save();
+        const payload = {
+            ngo: {
+            id: ngo.id
+          }
+        };
+
+        jwt.sign(
+          payload,
+          "randomString", {
+          expiresIn: 2592000
+        },
+          (err, token) => {
+            if (err) { throw err; }
+            //console.log(token);
+            res.status(200).json({
+              token
+            });
+          }
+        );
+      } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Error in Saving");
+      }
+    }
+);
+
+router.post("/NGOlogin",
+    [ check("Email", "Please enter a username").isLength({ min: 1 }),
+      check("Password", "Please enter a valid password").isLength({
+        min: 6
+      })
+    ],
+    async (req, res) => {
+
+      const { Email, Password } = req.body;
+      try {
+        let ngo = await NGO.findOne({
+          Email
+        });
+        if (!ngo)
+          return res.status(400).json({
+            message: "NGO Not Exist"
+          });
+  
+        const isMatch = await bcrypt.compare(Password, ngo.Password);
+        if (!isMatch)
+          return res.status(400).json({
+            message: "Incorrect Password !"
+          });
+  
+        const payload = {
+            ngo: {
+            id: ngo.id
+          }
+        };
+
+        jwt.sign(
+          payload,
+          "randomString",
+          {
+            expiresIn: 2592000
+          },
+          (err, token) => {
+            if (err) { throw err; }
+            res.status(200).json({
+              token 
+            });
+          }
+        );
+      } catch (e) {
+        console.error(e);
+        res.status(500).json({
+          message: "Server Error"
+        });
+      }
+    }
+  );
 
 router.post("/signup", async (req, res) => {     
       const {
