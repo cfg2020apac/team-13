@@ -9,7 +9,8 @@ import {
   Grid,
   makeStyles,
   IconButton,
-  CardMedia
+  CardMedia,
+  Button
 } from '@material-ui/core';
 import FacebookIcon from 'src/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -51,6 +52,12 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 140,
   },
+  button: {
+    color: theme.palette.secondary.main,
+    marginBottom: theme.spacing(6),
+    fontSize: 16,
+    border: '2px solid',
+  }
 }));
 
 const Home = () => {
@@ -76,6 +83,11 @@ const Home = () => {
           className={classes.box}
         >
           <Container maxWidth="md">
+            <Box display="flex" justifyContent="center">
+              <Button variant="outlined" size="large" className={classes.button}>
+                <b>EMERGENCY CHARITY NEEDS DURING CORONAVIRUS CRISIS</b>
+              </Button>
+            </Box>
             <Card className={classes.card} justifyContent="center">
               <CardContent>
                 <Typography align="center" variant="h2" component="h2">
@@ -150,6 +162,11 @@ const Home = () => {
                   ))}
                 </Grid>
               </Grid>
+            <Box display="flex" justifyContent="center">
+              <Button variant="outlined" size="large" className={classes.button}>
+                <b>ANNUAL REPORT 2018</b>
+              </Button>
+            </Box>
           </Container>
         </Box>
         <img

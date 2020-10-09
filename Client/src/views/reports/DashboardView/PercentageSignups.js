@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TasksProgress = ({ className, ...rest }) => {
+const PercentageSignups = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -45,7 +45,7 @@ const TasksProgress = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TASKS PROGRESS
+              PERCENTAGE OF EVENT SIGN-UPS
             </Typography>
             <Typography
               color="textPrimary"
@@ -71,8 +71,8 @@ const TasksProgress = ({ className, ...rest }) => {
   );
 };
 
-TasksProgress.propTypes = {
+PercentageSignups.propTypes = {
   className: PropTypes.string
 };
 
-export default TasksProgress;
+export default PercentageSignups;

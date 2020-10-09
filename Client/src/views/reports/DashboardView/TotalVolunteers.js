@@ -52,7 +52,7 @@ const TotalVolunteers = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              TOTAL CUSTOMERS
+              TOTAL VOLUNTEERS
             </Typography>
             <Typography
               color="textPrimary"
