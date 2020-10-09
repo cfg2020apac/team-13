@@ -175,6 +175,7 @@ const VolunteerLoginView = () => {
                     component={RouterLink}
                     to="/volunteer/register"
                     variant="h6"
+                    color="secondary"
                   >
                     Sign up
                   </Link>

@@ -190,6 +190,7 @@ const NgoRegisterView = () => {
                     component={RouterLink}
                     to="/ngo/login"
                     variant="h6"
+                    color="secondary"
                   >
                     Sign in
                   </Link>

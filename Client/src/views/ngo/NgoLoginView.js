@@ -175,6 +175,7 @@ const NgoLoginView = () => {
                     component={RouterLink}
                     to="/ngo/register"
                     variant="h6"
+                    color="secondary"
                   >
                     Sign up
                   </Link>
