@@ -57,7 +57,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(6),
     fontSize: 16,
     border: '2px solid',
-  }
+  },
+  largeIcon: {
+    width: 60,
+    height: 60,
+  },
 }));
 
 const Home = () => {
@@ -111,7 +115,7 @@ const Home = () => {
               display="flex"
               flexDirection="row"
             >
-              <IconButton className={classes.icon} color="secondary" size="medium">
+              <IconButton iconStyle={classes.largeIcon} color="secondary" size="medium">
                 <FacebookIcon />
               </IconButton>
               <IconButton className={classes.icon} color="secondary" size="medium">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -7,11 +7,10 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  Typography,
-  colors,
   makeStyles,
   useTheme, Button
 } from '@material-ui/core';
+import { useHttpClient } from "src/hooks/http-hook";
 import { ResponsivePie } from '@nivo/pie';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
@@ -24,9 +23,9 @@ const useStyles = makeStyles(() => ({
 
 const VolunteerDemographicsGender = ({ className, ...rest }) => {
   const classes = useStyles();
-  const theme = useTheme();
+  const { isLoading, error, sendRequest } = useHttpClient();
 
-  const data = [
+  const mockData = [
     {
       "id": "Female",
       "label": "Female",
@@ -46,6 +45,43 @@ const VolunteerDemographicsGender = ({ className, ...rest }) => {
       "color": "hsl(272,7%,41%)"
     }
   ];
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/data/genderChart`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          const latestData = responseData.data[0];
+
+          setDataSets((prev) => {
+            prev = responseData.data;
+            return prev;
+          });
+
+          setCurrentData((prev) => {
+            prev = latestData;
+            prev.ecg_data = latestData.ecg_data;
+            return prev;
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (currentData.ecg_data.length === 0) {
+      getData();
+    }
+  }, [isLoading, currentData, sendRequest, setCurrentData, error]);
 
   return (
     <Card
