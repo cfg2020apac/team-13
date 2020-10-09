@@ -1,55 +1,47 @@
 const mongoose = require("mongoose");
 
 const VolunteerSchema = mongoose.Schema({
-  email:{
+  FirstName:{
     type: String,
     required: true
   },
-  Last_Name:{
+  LastName:{ 
     type: String,
     required: true
   },
-  Mobile_Phone:{
+  MobilePhone:{
     type: Number,
     required: true
   },
-  Organization_Name:{
+  OrganizationName:{
     type: String,
     required: true
   },
-  Email_Clean_Out: {
+  EmailCleanOut: {
     type: String,
     required: true
   },
-  Connection_Id:{
+  ConnectionId:{
     type: String,
     required: true
   },
-  Attendance_Status:{
-      tpye: String,
+  AttendanceStatus:{
+    type: String,
       required: true
   },
   Employer:{
-    tpye: String,
+    type: String,
     required: true
   },
-  Attendance_Status:{
-    tpye: String,
-    required: true
-  },
-  Volunteer_Opportunity_Name:{
-    tpye: String,
-    required: true
-  },
-  Organization_Name:{
-    tpye: String,
+  VolunteerOpportunityName:{
+    type: String,
     required: true
   },
   Type:{
-    tpye: String,
+    type: String,
     required: true
   },
-  Contact_ID:{
+  ContactID:{
     type: String,
     required: true
   },
@@ -57,7 +49,7 @@ const VolunteerSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  Hours_Served:{
+  HoursServed:{
     type: Number,
     required: true
   },

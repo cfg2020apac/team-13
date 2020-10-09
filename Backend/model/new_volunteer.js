@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const NewVolunteerSchema = mongoose.Schema({
-  Contact_ID:{
+  ContactID:{
     type: String,
     required: true
   },
@@ -9,15 +9,15 @@ const NewVolunteerSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  First_Name:{
+  FirstName:{
     type: String,
     required: true
   },
-  Last_Name:{
+  LastName:{
     type: String,
     required: true
   },
-  HOHK_Newsletter_Optin:{
+  HOHKNewsletterOptin:{
     type: Number,
     required: False
   },
@@ -25,59 +25,59 @@ const NewVolunteerSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  Contact_Type:{
+  ContactType:{
       tpye: String,
       required: true
   },
   Employer:{
-    tpye: String,
+    type: String,
     required: true
   },
   Age:{
-    tpye: Number,
+    type: Number,
     required: true
   },
-  Hours_Served:{
+  HoursServed:{
     tpye: Number,
     required: true
   },
   Email:{
-    tpye: String,
+    type: String,
     required: true
   },
-  Mobile_Phone:{
+  MobilePhone:{
     tpye: Number,
     required: true
   },
-  Primary_Street:{
+  PrimaryStreet:{
     tpye: String,
     required: true
   },
-  Primary_City:{
+  PrimaryCity:{
     tpye: String,
     required: true
   },
-  Primary_State:{
+  PrimaryState:{
     tpye: String,
     required: true
   },
-  Primary_Zip:{
+  PrimaryZip:{
     tpye: Number,
     required: true
   },
   Gender:{
+    type: String,
+    required: true
+  },
+  EthnicityRace:{
     tpye: String,
     required: true
   },
-  Ethnicity_Race:{
+  VolunteerType:{
     tpye: String,
     required: true
   },
-  Volunteer_Type:{
-    tpye: String,
-    required: true
-  },
-  Organization_Name:{
+  OrganizationName:{
     tpye: String,
     required: true
   }
