@@ -15,6 +15,8 @@ getVolunteerCount = (minVal, maxVal) => {
     try {
         let cnt = await volunteerData.where('Age').gte(minVal).lte(maxVal).count;
         return cnt;
+    } catch (e) {
+      throw e;
     }
 };
 
