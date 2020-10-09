@@ -41,12 +41,6 @@ const Toolbar = ({ className, ...rest }) => {
         <Button className={classes.exportButton}>
           Export
         </Button>
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Add product
-        </Button>
       </Box>
       <Box mt={3}>
         <Card>

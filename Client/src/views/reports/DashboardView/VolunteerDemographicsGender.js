@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const VolunteerDemographics = ({ className, ...rest }) => {
+const VolunteerDemographicsGender = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -38,6 +38,12 @@ const VolunteerDemographics = ({ className, ...rest }) => {
       "label": "Male",
       "value": 55,
       "color": "hsl(200,66%,56%)"
+    },
+    {
+      "id": "Others",
+      "label": "Others",
+      "value": 28,
+      "color": "hsl(272,7%,41%)"
     }
   ];
 
@@ -54,7 +60,7 @@ const VolunteerDemographics = ({ className, ...rest }) => {
         >
           Last Month
         </Button>
-      )} title="Volunteer Demographics" />
+      )} title="Volunteer Gender Demographics" />
       <Divider />
       <CardContent>
         <Box
@@ -104,8 +110,8 @@ const VolunteerDemographics = ({ className, ...rest }) => {
   );
 };
 
-VolunteerDemographics.propTypes = {
+VolunteerDemographicsGender.propTypes = {
   className: PropTypes.string
 };
 
-export default VolunteerDemographics;
+export default VolunteerDemographicsGender;

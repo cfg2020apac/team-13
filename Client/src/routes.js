@@ -22,7 +22,6 @@ const routes = [
     path: 'app',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: <AccountView /> },
       { path: 'volunteers', element: <VolunteerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'events', element: <ProductListView /> },
