@@ -7,12 +7,12 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import { useHttpClient } from "src/hooks/http-hook";
-import LatestOrders from './LatestOrders';
-import LatestProducts from './LatestProducts';
 import PercentageSignups from './PercentageSignups';
 import TotalVolunteers from './TotalVolunteers';
 import EventTypes from "./EventTypes";
-import VolunteerDemographics from "./VolunteerDemographics";
+import VolunteerDemographicsAge from "./VolunteerDemographicsAge";
+import VolunteerDemographicsGender from "./VolunteerDemographicsGender";
+import AttendanceStats from "./AttendanceStats";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,7 +118,7 @@ const Dashboard = () => {
             xs={12}
             className={classes.pie}
           >
-            <VolunteerDemographics />
+            <VolunteerDemographicsAge />
           </Grid>
           <Grid
             item
@@ -126,8 +126,9 @@ const Dashboard = () => {
             md={6}
             xl={3}
             xs={12}
+            className={classes.pie}
           >
-            <LatestProducts />
+            <VolunteerDemographicsGender />
           </Grid>
           <Grid
             item
@@ -135,8 +136,9 @@ const Dashboard = () => {
             md={12}
             xl={9}
             xs={12}
+            className={classes.pie}
           >
-            <LatestOrders />
+            <AttendanceStats />
           </Grid>
         </Grid>
       </Container>

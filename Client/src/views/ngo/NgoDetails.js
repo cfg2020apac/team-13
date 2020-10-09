@@ -9,23 +9,32 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField,
-  makeStyles
+  makeStyles,
+  Link
 } from '@material-ui/core';
+import EventDetails from './EventDetails';
 
-const states = [
+const events = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  }
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
 ];
 
 const useStyles = makeStyles(() => ({
@@ -59,8 +68,8 @@ const NgoDetails = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
+          title="Events"
+          subheader="Available events requested"
         />
         <Divider />
         <CardContent>
@@ -68,108 +77,7 @@ const NgoDetails = ({ className, ...rest }) => {
             container
             spacing={3}
           >
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                onChange={handleChange}
-                required
-                value={values.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
+            <EventDetails events={events}/>
           </Grid>
         </CardContent>
         <Divider />
@@ -178,12 +86,14 @@ const NgoDetails = ({ className, ...rest }) => {
           justifyContent="flex-end"
           p={2}
         >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Add Events
-          </Button>
+          <Link href="/ngo/request">
+            <Button
+              color="secondary"
+              variant="contained"
+            >
+              Request Events
+            </Button>
+          </Link>
         </Box>
       </Card>
     </form>

@@ -41,12 +41,6 @@ const Toolbar = ({ className, ...rest }) => {
         <Button className={classes.exportButton}>
           Export
         </Button>
-        <Button
-          color="primary"
-          variant="contained"
-        >
-          Add volunteer
-        </Button>
       </Box>
       <Box mt={3}>
         <Card>
@@ -66,7 +60,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search volunteer"
+                placeholder="Search NGO"
                 variant="outlined"
               />
             </Box>

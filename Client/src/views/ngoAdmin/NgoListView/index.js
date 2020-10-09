@@ -25,7 +25,7 @@ const NgoListView = () => {
   return (
     <Page
       className={classes.root}
-      title="Volunteers"
+      title="NGOs"
     >
       <Container maxWidth={false}>
         <Toolbar />

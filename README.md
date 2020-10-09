@@ -17,70 +17,66 @@
 Return Type:
 ```javascript
 {
-    "Environmental education; Integrated": 2,
-    "Integrated": 7,
+    "Integrated": 167,
     "Hunger & homelessness": 146,
     "Environmental education": 14,
-    "Children and youth; Elderly; Hunger & homelessness": 36,
     "Children and youth": 13,
-    "Children and youth; People with disabilities": 21,
-    "Environmental education; Women": 1,
     "Hungers and homeless": 14,
     "Elderly": 77,
-    "Children and youth; Environmental education": 11,
-    "Children and youth; Ethnic minorities": 4,
     "People with mental illness": 1,
-    "Elderly; People with illness": 6,
-    "Adults; Elderly; Environmental education": 1,
-    "Adults; Children and youth; Elderly; People with disabilities": 1,
-    "Adults; Children and youth; Elderly": 2,
     "Refugees and asylum seekers": 1,
     "Other": 1,
-    "Adults; Children and youth; Elderly; Refugees and asylum seekers; Women": 2,
-    "": 13,
     "Animals": 43,
-    "Women": 2,
-    "Environmental education; Hunger & homelessness": 47,
-    "People with disabilities; People with mental illness": 12,
-    "Children and youth; Refugees and asylum seekers": 1
+    "Women": 2
 }
 ```
 
 ## 4. /data/attendanceChart
-![](imgs/attendanceChart.PNG) Data is returned as JSON, refer to the picture and text below.
+![](imgs/attendanceChart.PNG) Data is returned as JSON, refer to the picture and text below. (Image is outdated, numbers are replaced by last 4 digits of the OccurenceID)
 ```javascript
 {
-    "0": {
-        "Needed": 16,
-        "Confirmed": 10,
-        "Attended": 8
+    "6866": {
+        "Needed": 200,
+        "Confirmed": 2,
+        "Attended": 0
     },
-    "1": {
-        "Needed": 30,
-        "Confirmed": 27,
-        "Attended": 27
+    "6868": {
+        "Needed": 50,
+        "Confirmed": 0,
+        "Attended": 0
     },
-    "2": {
-        "Needed": 30,
-        "Confirmed": 27,
-        "Attended": 27
+    "6870": {
+        "Needed": 20,
+        "Confirmed": 0,
+        "Attended": 0
     },
-    "3": {
-        "Needed": 30,
-        "Confirmed": 28,
-        "Attended": 28
+    "6871": {
+        "Needed": 20,
+        "Confirmed": 15,
+        "Attended": 0
     },
-    "4": {
+    "6881": {
         "Needed": 3,
-        "Confirmed": 7,
-        "Attended": 7
-    },
-    "5": {
-        "Needed": 3,
-        "Confirmed": 1,
-        "Attended": 1
+        "Confirmed": 0,
+        "Attended": 0
     },
     .
     .
     .
 ```
+
+## 5. /data/genderChart
+![](imgs/genderChart.PNG) Returned data is as follows.
+```javascript
+{
+    "Male": 1,
+    "Female": 8,
+    "Others": 10
+}
+```
+
+## 6. /web/NGOsignup
+![](imgs/ngosignup.PNG) Parameters are the ones defined by Javier at the slack channel. Returns a JWT on successful authentication.
+
+## 7. /web/NGOlogin
+![](imgs/ngologin.PNG) Just requires the email and password, returns a JWT on successful authentication. 
