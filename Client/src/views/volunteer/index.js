@@ -15,11 +15,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Volunteer from './Volunteer';
 import VolunteerDetails from './VolunteerDetails';
+import OpportunitiesDetails from './OpportunitiesDetails';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    height: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
   },
@@ -48,6 +48,29 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid',
   }
 }));
+
+const events = [
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+  {
+    name: 'Feed people',
+    dateTime: '10/10/20 7:00'
+  },
+];
 
 const NgoHome = () => {
   const classes = useStyles();
@@ -78,6 +101,27 @@ const NgoHome = () => {
               xs={12}
             >
               <VolunteerDetails/>
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={6}
+              xs={12}
+            >
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              md={6}
+              xs={12}
+            >
+              <Typography color="textPrimary" variant="h3">
+                Suggested Opportunities
+              </Typography>
+              <Typography color="textSecondary" variant="h4">
+                Edit your skills and preferences to refine these suggestions
+              </Typography>
+              <OpportunitiesDetails events={events}/>
             </Grid>
           </Grid>
         </Box>
