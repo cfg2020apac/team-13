@@ -97,16 +97,19 @@ const Results = ({ className, volunteers, ...rest }) => {
                   Name
                 </TableCell>
                 <TableCell>
+                  Age
+                </TableCell>
+                <TableCell>
+                  Gender
+                </TableCell>
+                <TableCell>
                   Email
                 </TableCell>
                 <TableCell>
                   Location
                 </TableCell>
                 <TableCell>
-                  Phone
-                </TableCell>
-                <TableCell>
-                  Registration date
+                  Mobile
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -115,12 +118,12 @@ const Results = ({ className, volunteers, ...rest }) => {
                 <TableRow
                   hover
                   key={volunteer.id}
-                  selected={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
+                  selected={selectedVolunteerIds.indexOf(volunteer._id) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, volunteer.id)}
+                      checked={selectedVolunteerIds.indexOf(volunteer._id) !== -1}
+                      onChange={(event) => handleSelectOne(event, volunteer._id)}
                       value="true"
                     />
                   </TableCell>
@@ -131,29 +134,31 @@ const Results = ({ className, volunteers, ...rest }) => {
                     >
                       <Avatar
                         className={classes.avatar}
-                        src={volunteer.avatarUrl}
                       >
-                        {getInitials(volunteer.name)}
+                        {getInitials(volunteer.Name)}
                       </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                        {volunteer.name}
+                        {volunteer.Name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {volunteer.email}
+                    {volunteer.Age}
                   </TableCell>
                   <TableCell>
-                    {`${volunteer.address.city}, ${volunteer.address.state}, ${volunteer.address.country}`}
+                    {volunteer.Gender}
                   </TableCell>
                   <TableCell>
-                    {volunteer.phone}
+                    {volunteer.Email}
                   </TableCell>
                   <TableCell>
-                    {moment(volunteer.createdAt).format('DD/MM/YYYY')}
+                    {`${volunteer.Location}`}
+                  </TableCell>
+                  <TableCell>
+                    {volunteer.Mobile}
                   </TableCell>
                 </TableRow>
               ))}
