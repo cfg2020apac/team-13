@@ -10,3 +10,7 @@
 ###  2.2. Invalid credentials
  On invalid credentials, JWT is not returned and an error message is returned. 
  ![](imgs/login-incorrect.PNG)
+ 
+ 
+## 3. /data/typeChart
+![](imgs/typeChart.PNG) Just plot it with all of this data, dont mind the weird column names, its because of the mock data.
