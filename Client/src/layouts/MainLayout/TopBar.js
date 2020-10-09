@@ -42,12 +42,12 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/app/volunteers',
     icon: UsersIcon,
     title: 'Customers'
   },
   {
-    href: '/app/products',
+    href: '/app/events',
     icon: ShoppingBagIcon,
     title: 'Products'
   },
