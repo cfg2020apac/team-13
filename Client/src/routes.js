@@ -11,6 +11,7 @@ import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
+import Home from 'src/views/landing/Home';
 
 const routes = [
   {
@@ -29,6 +30,7 @@ const routes = [
     path: '/',
     element: <MainLayout />,
     children: [
+      { path: 'home', element:<Home/> },
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
