@@ -5,8 +5,8 @@
 
 ## 2. /web/login
 ###  2.1. Authentication
-       On valid credentials (email and password), a JWT is returned. 
-       ![](imgs/login.PNG)
+ On valid credentials (email and password), a JWT is returned. 
+ ![](imgs/login.PNG)
 ###  2.2. Invalid credentials
-       On invalid credentials, JWT is not returned and an error message is returned. 
-       ![](imgs/login-incorrect.PNG)
+ On invalid credentials, JWT is not returned and an error message is returned. 
+ ![](imgs/login-incorrect.PNG)
