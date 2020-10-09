@@ -7,6 +7,68 @@ const router = express.Router();
 const User = require("../model/user");
 
 router.post("/signup", async (req, res) => {     
+    const {
+      Email,
+      Password,
+      Name,
+      Location,
+      Mobile
+    } = req.body;
+
+   try {
+        let person = await User.findOne({
+          Email
+        });
+        
+        if (person) {
+          return res.status(400).json({
+            msg: "User Already Exists"
+          });
+        }
+        // console.log("HERE, USER NOT EXISTING!");
+        person = new User({
+          Email,
+          Password,
+          Name,
+          Age,
+          Gender,
+          Mobile,
+          Location
+        });
+        
+        const salt = await bcrypt.genSalt(10);
+        person.Password = await bcrypt.hash(Password, salt);
+
+        await person.save();
+        const payload = {
+          user: {
+            id: person.id
+          }
+        };
+
+        jwt.sign(
+          payload,
+          "randomString", {
+          expiresIn: 2592000
+        },
+          (err, token) => {
+            if (err) { throw err; }
+            //console.log(token);
+            res.status(200).json({
+              token
+            });
+          }
+        );
+      } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Error in Saving");
+      }
+    }
+);
+
+
+
+router.post("/signup", async (req, res) => {     
       const {
         Email,
         Password,

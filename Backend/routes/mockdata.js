@@ -41,12 +41,16 @@ router.get("/attendanceChart", async (req, res) => {
     try {
       let x = await handsOnData.find();
       //console.log(x);
-      var output = {};
+      var output = [];
 
       for (var element in x){
-        output[x[element]["OccurenceID"].slice(-4)] = {'Needed': x[element]['MaxAttendance'],
-                           'Confirmed': x[element]['Confirmed'],
-                            'Attended': x[element]['Attended']}
+        var giant = {
+            "Event" : x[element]["OccurenceID"].slice(-4),
+            'Needed': x[element]['MaxAttendance'],
+            'Confirmed': x[element]['Confirmed'],
+            'Attended': x[element]['Attended']
+        };
+        output.push(giant);
       }
       //console.log(output);
       res.json(output);
