@@ -3,55 +3,55 @@ const mongoose = require("mongoose");
 const VolunteerSchema = mongoose.Schema({
   FirstName:{
     type: String,
-    required: true
+    required: false
   },
   LastName:{ 
     type: String,
-    required: true
+    required: false
   },
   MobilePhone:{
-    type: Number,
-    required: true
+    type: String,
+    required: false
   },
   OrganizationName:{
     type: String,
-    required: true
+    required: false
   },
   EmailCleanOut: {
     type: String,
-    required: true
+    required: false
   },
   ConnectionId:{
     type: String,
-    required: true
+    required: false
   },
   AttendanceStatus:{
     type: String,
-      required: true
+      required: false
   },
   Employer:{
     type: String,
-    required: true
+    required: false
   },
   VolunteerOpportunityName:{
     type: String,
-    required: true
+    required: false
   },
   Type:{
     type: String,
-    required: true
+    required: false
   },
   ContactID:{
     type: String,
-    required: true
+    required: false
   },
   Age:{
     type: Number,
-    required: true
+    required: false
   },
   HoursServed:{
     type: Number,
-    required: true
+    required: false
   },
 
 });
