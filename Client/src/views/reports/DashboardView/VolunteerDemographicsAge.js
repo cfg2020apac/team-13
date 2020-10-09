@@ -25,27 +25,6 @@ const VolunteerDemographicsAge = ({ className, ...rest }) => {
   const classes = useStyles();
   const { isLoading, error, sendRequest } = useHttpClient();
 
-  const mockData = [
-    {
-      "id": "below 25",
-      "label": "below 25",
-      "value": 63,
-      "color": "hsl(272,7%,41%)"
-    },
-    {
-      "id": "25-40",
-      "label": "25-40",
-      "value": 55,
-      "color": "hsl(47,53%,92%)"
-    },
-    {
-      "id": "above 40",
-      "label": "above 40",
-      "value": 90,
-      "color": "hsl(3,83%,95%)"
-    }
-  ];
-
   const [data, setData] = useState([]);
   const mappings = {
     "0-17": "Below 18",
@@ -78,7 +57,6 @@ const VolunteerDemographicsAge = ({ className, ...rest }) => {
             return ages;
           });
         }
-        console.log(responseData);
       } catch (err) {
         console.log(err);
       }

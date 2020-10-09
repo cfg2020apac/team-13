@@ -35,39 +35,6 @@ const EventTypes = ({ className, ...rest }) => {
         }
     };
 
-    const mockData = [
-        {
-            "id": "Integrated",
-            "label": "Integrated",
-            "value": 90,
-            "color": "hsl(41, 70%, 50%)"
-        },
-        {
-            "id": "Hunger & homelessness",
-            "label": "Hunger & homelessness",
-            "value": 165,
-            "color": "hsl(311, 70%, 50%)"
-        },
-        {
-            "id": "Environmental education",
-            "label": "Environmental education",
-            "value": 524,
-            "color": "hsl(253, 70%, 50%)"
-        },
-        {
-            "id": "Children and youth",
-            "label": "Children and youth",
-            "value": 241,
-            "color": "hsl(261, 70%, 50%)"
-        },
-        {
-            "id": "Elderly",
-            "label": "Elderly",
-            "value": 458,
-            "color": "hsl(72, 70%, 50%)"
-        }
-    ];
-
   const [data, setData] = useState([]);
   const mappings = {
     "Integrated": "Integrated",
@@ -107,7 +74,6 @@ const EventTypes = ({ className, ...rest }) => {
             return ages;
           });
         }
-        console.log(responseData);
       } catch (err) {
         console.log(err);
       }

@@ -25,27 +25,6 @@ const VolunteerDemographicsGender = ({ className, ...rest }) => {
   const classes = useStyles();
   const { isLoading, error, sendRequest } = useHttpClient();
 
-  const mockData = [
-    {
-      "id": "Female",
-      "label": "Female",
-      "value": 63,
-      "color": "hsl(3,100%,83%)"
-    },
-    {
-      "id": "Male",
-      "label": "Male",
-      "value": 55,
-      "color": "hsl(200,66%,56%)"
-    },
-    {
-      "id": "Others",
-      "label": "Others",
-      "value": 28,
-      "color": "hsl(272,7%,41%)"
-    }
-  ];
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
