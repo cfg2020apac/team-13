@@ -84,4 +84,4 @@ const NewVolunteerSchema = mongoose.Schema({
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model("NewVolunteer", NewVolunteerSchema);
+module.exports = mongoose.model("new_volunteer", NewVolunteerSchema);
