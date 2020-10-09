@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const VolunteerDataSchema = mongoose.Schema({
-  First_Name:{
+const VolunteerSchema = mongoose.Schema({
+  email:{
     type: String,
     required: true
   },
@@ -65,4 +65,4 @@ const VolunteerDataSchema = mongoose.Schema({
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model("VolunteerData", VolunteerDataSchema);
+module.exports = mongoose.model("volunteer_data", VolunteerSchema);
