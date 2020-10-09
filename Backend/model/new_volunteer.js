@@ -26,59 +26,55 @@ const NewVolunteerSchema = mongoose.Schema({
     required: true
   },
   Contact_Type:{
-      tpye: String,
+    type: String,
       required: true
   },
   Employer:{
-    tpye: String,
+    type: String,
     required: true
   },
   Age:{
-    tpye: Number,
+    type: Number,
     required: true
   },
   Hours_Served:{
-    tpye: Number,
+    type: Number,
     required: true
   },
   Email:{
-    tpye: String,
+    type: String,
     required: true
   },
   Mobile_Phone:{
-    tpye: Number,
+    type: Number,
     required: true
   },
   Primary_Street:{
-    tpye: String,
+    type: String,
     required: true
   },
   Primary_City:{
-    tpye: String,
+    type: String,
     required: true
   },
   Primary_State:{
-    tpye: String,
+    type: String,
     required: true
   },
   Primary_Zip:{
-    tpye: Number,
+    type: Number,
     required: true
   },
   Gender:{
-    tpye: String,
+    type: String,
     required: true
   },
   Ethnicity_Race:{
-    tpye: String,
+    type: String,
     required: true
   },
   Volunteer_Type:{
-    tpye: String,
-    required: true
-  },
-  Organization_Name:{
-    tpye: String,
+    type: String,
     required: true
   }
 });

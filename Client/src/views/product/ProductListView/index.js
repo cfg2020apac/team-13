@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductList = () => {
   const classes = useStyles();
-  const [products] = useState(data);
+  const [events] = useState(data);
 
   return (
     <Page
@@ -39,7 +39,7 @@ const ProductList = () => {
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {events.map((product) => (
               <Grid
                 item
                 key={product.id}

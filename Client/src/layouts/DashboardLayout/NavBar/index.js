@@ -26,7 +26,7 @@ import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
+  jobTitle: 'Administrator',
   name: 'Katarina Smith'
 };
 
@@ -37,12 +37,12 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/app/volunteers',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'Volunteers'
   },
   {
-    href: '/app/products',
+    href: '/app/events',
     icon: ShoppingBagIcon,
     title: 'Products'
   },
@@ -55,21 +55,6 @@ const items = [
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
   }
 ];
 
@@ -105,6 +90,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       height="100%"
       display="flex"
       flexDirection="column"
+      bgcolor="secondary.main"
     >
       <Box
         alignItems="center"
@@ -119,14 +105,13 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           to="/app/account"
         />
         <Typography
-          className={classes.name}
-          color="textPrimary"
+          color="primary"
           variant="h5"
         >
           {user.name}
         </Typography>
         <Typography
-          color="textSecondary"
+          color="primary"
           variant="body2"
         >
           {user.jobTitle}
@@ -146,39 +131,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box flexGrow={1} />
-      <Box
-        p={2}
-        m={2}
-        bgcolor="background.dark"
-      >
-        <Typography
-          align="center"
-          gutterBottom
-          variant="h4"
-        >
-          Need more?
-        </Typography>
-        <Typography
-          align="center"
-          variant="body2"
-        >
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box
-          display="flex"
-          justifyContent="center"
-          mt={2}
-        >
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
-            See PRO version
-          </Button>
-        </Box>
-      </Box>
     </Box>
   );
 

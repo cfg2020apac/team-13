@@ -10,6 +10,8 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
+import Home from 'src/views/landing/Home';
 
 const routes = [
   {
@@ -17,9 +19,9 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
-      { path: 'customers', element: <CustomerListView /> },
+      { path: 'volunteers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
-      { path: 'products', element: <ProductListView /> },
+      { path: 'events', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
@@ -28,10 +30,19 @@ const routes = [
     path: '/',
     element: <MainLayout />,
     children: [
+      { path: 'home', element:<Home/> },
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
+  {
+    path: 'ngo',
+    element: <MainLayout />,
+    children: [
+      { path: 'request', element: <VolunteerRequestForm /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }

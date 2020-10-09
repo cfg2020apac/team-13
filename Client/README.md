@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-[![React Material Dashboard](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-free-xl.jpg)](https://react-material-dashboard.devias.io/)
+[![React Material Dashboard](https://s3.eu-west-2.amazonaws.com/devias/events/react-material-dashboard/react-material-free-xl.jpg)](https://react-material-dashboard.devias.io/)
 
 > Free React Dashboard made with [Material UI's](https://material-ui.com/?ref=devias-io) components, [React](https://reactjs.org/?ref=devias-io) and of course [create-react-app](https://facebook.github.io/create-react-app/?ref=devias-io) to boost your app development process! We'll launch a pro version soon, so if you are interested subscribe to our personal emailing list on [https://devias.io/](https://devias.io/)
 
@@ -23,8 +23,8 @@ We also have a pro version of this product which bundles even more pages and com
 ## Demo
 
 - [Dashboard Page](https://react-material-dashboard.devias.io/app/dashboard)
-- [Users Page](https://react-material-dashboard.devias.io/app/customers)
-- [Products Page](https://react-material-dashboard.devias.io/app/products)
+- [Users Page](https://react-material-dashboard.devias.io/app/volunteers)
+- [Products Page](https://react-material-dashboard.devias.io/app/events)
 - [Register Page](https://react-material-dashboard.devias.io/register)
 - [Login Page](https://react-material-dashboard.devias.io/login)
 - [Account Page](https://react-material-dashboard.devias.io/app/account)
@@ -33,7 +33,7 @@ We also have a pro version of this product which bundles even more pages and com
 
 ## Quick start
 
-- [Download from Github](https://github.com/devias-io/react-material-dashboard/archive/master.zip) or [Download from Devias](https://devias.io/products/material-react-dashboard) or clone the repo: `git clone https://github.com/devias-io/react-material-dashboard.git`
+- [Download from Github](https://github.com/devias-io/react-material-dashboard/archive/master.zip) or [Download from Devias](https://devias.io/events/material-react-dashboard) or clone the repo: `git clone https://github.com/devias-io/react-material-dashboard.git`
 
 - Make sure your NodeJS and npm versions are up to date for `React 16.8.6`
 
@@ -49,9 +49,9 @@ The documentation for the React Material Kit is can be found [here](https://mate
 
 ## 🖌 Design Files
 
-👉[Download Sketch file](https://s3.eu-west-2.amazonaws.com/devias/products/react-material-dashboard/react-material-dashboard-free.sketch)
+👉[Download Sketch file](https://s3.eu-west-2.amazonaws.com/devias/events/react-material-dashboard/react-material-dashboard-free.sketch)
 
-👉[Download Figma file](https://devias.s3.eu-west-2.amazonaws.com/products/react-material-dashboard/react-material-dashboard-free.fig)
+👉[Download Figma file](https://devias.s3.eu-west-2.amazonaws.com/events/react-material-dashboard/react-material-dashboard-free.fig)
 
 ## File Structure
 

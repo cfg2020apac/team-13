@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
 const handsOnSchema = mongoose.Schema({
-  occID:{
-      type: Number,
+  OccurenceID:{
+      type: String,
       required: true
   },
   Status:{
       type: String,
+      required: true
+  },
+  TotalHoursServed:{
+      type: Number,
       required: true
   },
   PopulationsServed:{
@@ -17,14 +21,30 @@ const handsOnSchema = mongoose.Schema({
       type: String,
       required: true
   },
+  VolunteerOpportunityName:{
+      type: String,
+      required: true
+  },
   Location:{
       type: String,
       required: true
   },
-  Needed: {
+  VolunteerLeaderNeeded: {
       type: Number,
       required: true
   },
+  MaxAttendance:{
+      type: Number,
+      required: true
+  },
+  MinAttendance:{
+    type: Number,
+    required: true
+  },
+  VolunteerStillNeeded: {
+    type: Number,
+    required: true
+},
   Confirmed: {
     type: Number,
     required: true
@@ -33,8 +53,12 @@ const handsOnSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  TotalHours: {
+  HoursServed: {
     type: Number,
+    required: true
+  },
+  RecordID:{
+    type: String,
     required: true
   }
 });
