@@ -10,6 +10,7 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
 
 const routes = [
   {
@@ -32,6 +33,14 @@ const routes = [
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
+  {
+    path: 'ngo',
+    element: <MainLayout />,
+    children: [
+      { path: 'request', element: <VolunteerRequestForm /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }
