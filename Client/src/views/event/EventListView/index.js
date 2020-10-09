@@ -33,7 +33,7 @@ const ProductList = () => {
       title="Products"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar data={events}/>
         <Box mt={3}>
           <Grid
             container

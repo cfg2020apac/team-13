@@ -28,7 +28,7 @@ const VolunteerListView = () => {
       title="Volunteers"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar data={volunteers}/>
         <Box mt={3}>
           <Results volunteers={volunteers} />
         </Box>
