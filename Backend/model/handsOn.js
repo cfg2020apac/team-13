@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const handsOnSchema = mongoose.Schema({
   occID:{
-      type: Number,
+      type: String,
       required: true
   },
   Status:{
@@ -10,7 +10,7 @@ const handsOnSchema = mongoose.Schema({
       required: true
   },
   PopulationsServed:{
-      type: String,
+      type: Number,
       required: true
   },
   ImpactArea:{

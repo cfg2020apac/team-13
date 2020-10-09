@@ -26,7 +26,7 @@ const VolunteerSchema = mongoose.Schema({
     required: true
   },
   Age:{
-      tpye: Number,
+      type: Number,
       required: true
   }
 });
