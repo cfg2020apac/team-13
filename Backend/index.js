@@ -1,8 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const InitiateMongoServer = require("./config/db");
-const mockdata = require('./routes/mockdata')
-const site = require('./routes/site')
+const heatmap = require('./routes/heatmap');
+const mockdata = require('./routes/mockdata');
+const site = require('./routes/site');
 // Initiate Mongo Server
 InitiateMongoServer();
 
@@ -18,6 +19,7 @@ app.get("/HAHA", (req, res) => {  // To extract data
   res.json({ message: "Hello Friends!" });
 });
 app.use("/web", site); 
+app.use("/heatmap", heatmap); 
 app.use("/data", mockdata); // Data Analytics
 
 app.listen(PORT, (req, res) => {
