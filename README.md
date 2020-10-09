@@ -114,3 +114,8 @@ Return Type:
 ## 12. /web/allNGOs 
 ![](imgs/allNGOs.PNG) Array of json objects with all details of all registered NGOs.
 
+## 13. /web/eventSignUp
+![](imgs/eventSignUp.PNG) Requires JWT to verify the volunteer authentication, the only parameter is the EventID which they are registering for.
+
+## 14. /web/eventRegisterers
+![](imgs/eventRegisterers.PNG) Returns an array with all emailIDs which have registered for the specific event.
