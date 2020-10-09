@@ -9,12 +9,23 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
+  Link,
+  Grid,
+  Button
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import NavItem from "./NavBar/NavItem";
+import {
+  AlertCircle as AlertCircleIcon,
+  BarChart as BarChartIcon, Lock as LockIcon, Settings as SettingsIcon,
+  ShoppingBag as ShoppingBagIcon,
+  User as UserIcon, UserPlus as UserPlusIcon,
+  Users as UsersIcon
+} from "react-feather";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -23,6 +34,49 @@ const useStyles = makeStyles(() => ({
     height: 60
   }
 }));
+
+const items = [
+  {
+    href: '/app/dashboard',
+    icon: BarChartIcon,
+    title: 'Dashboard'
+  },
+  {
+    href: '/app/customers',
+    icon: UsersIcon,
+    title: 'Customers'
+  },
+  {
+    href: '/app/products',
+    icon: ShoppingBagIcon,
+    title: 'Products'
+  },
+  {
+    href: '/app/account',
+    icon: UserIcon,
+    title: 'Account'
+  },
+  {
+    href: '/app/settings',
+    icon: SettingsIcon,
+    title: 'Settings'
+  },
+  {
+    href: '/login',
+    icon: LockIcon,
+    title: 'Login'
+  },
+  {
+    href: '/register',
+    icon: UserPlusIcon,
+    title: 'Register'
+  },
+  {
+    href: '/404',
+    icon: AlertCircleIcon,
+    title: 'Error'
+  }
+];
 
 const TopBar = ({
   className,
@@ -42,6 +96,17 @@ const TopBar = ({
         <RouterLink to="/">
           <Logo />
         </RouterLink>
+        <Box p={3} flexDirection="row">
+          {items.map((item) => (
+              <Button
+                href={item.href}
+                key={item.title}
+                color="inherit"
+              >
+                {item.title}
+              </Button>
+          ))}
+        </Box>
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">
