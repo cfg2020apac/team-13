@@ -10,6 +10,8 @@ const User = require("../model/user");
 const Opening = require("../model/opening")
 const EventSignUp = require("../model/SignUpEvent")
 
+
+
 router.get("/eventRegisterers", async (req, res) => {
     const {
         EventID
@@ -44,6 +46,16 @@ router.post("/eventSignUp", authV, async (req, res) => {
         EventID
      } = req.body;
     try {
+        let br = await Opening.findOne({
+            EventID
+          });
+
+        if( br.Needed <= br.CurrentlySignedUp){
+            return res.status(400).json({
+                msg: "Maximum threshold reached!"
+              });
+        }
+        
         let a = await EventSignUp.find({
             EventID
         });
@@ -59,7 +71,25 @@ router.post("/eventSignUp", authV, async (req, res) => {
       });
       //console.log(event);
       await registration.save();
-      res.send({ message: "Registration Successful!" });
+
+      try{
+        let ar = await Opening.findOne({
+            EventID
+          });
+        const newSignedUp = ar.CurrentlySignedUp + 1;
+        Opening.updateOne({ EventID: EventID }, { CurrentlySignedUp: newSignedUp }, function (
+            err, result) {
+            if (err) {
+              res.send(err);
+              console.log(err);
+            }
+            else {
+                res.send({ message: "Registration Successful!" });
+            }
+          });
+      } catch(e){
+        res.send({ message: "Unable to update currentlySignedUp!" });
+      }
     }
     catch (e) {
       console.log(e);
