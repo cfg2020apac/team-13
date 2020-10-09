@@ -82,7 +82,7 @@ Return Type:
 ![](imgs/ngologin.PNG) Just requires the email and password, returns a JWT on successful authentication. 
 
 ## 8. /web/createOpening
-![](imgs/createOpening.PNG) Requires a bunch of parameters stated below. Requires JWT for authentication, add JWT from signup/login to the headers and name it 'token'. Parameters:
+![](imgs/opening.PNG) Requires a bunch of parameters stated below. Requires JWT for authentication, add JWT from signup/login to the headers and name it 'token'. Parameters:
 ```javascript
         Title,
         Description,
