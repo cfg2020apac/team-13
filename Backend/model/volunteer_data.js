@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const VolunteerSchema = mongoose.Schema({
-  email:{
+  First_name:{
     type: String,
     required: true
   },
-  Last_Name:{
+  Last_Name:{ 
     type: String,
     required: true
   },
