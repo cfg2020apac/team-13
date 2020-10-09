@@ -1,140 +1,75 @@
 const mongoose = require("mongoose");
 
-const ngo_partner = mongoose.Schema({
-  name:{
+const NGOPartner = mongoose.Schema({
+  OrganizationName:{
     type: String,
     required: true
   },
-  section_88:{
+  Section88:{
     type: String,
     required: true
   },
-  focus_area:{
+  FocusArea:{
     type: String,
     required: true
   },
-  served_population_groups:{
+  ServedPopulationGroups:{
     type: String,
     required: true
   },
-  description_of_the_served_group: {
+  DescriptionServedGroup: {
     type: String,
     required: true
   },
-  covid19_need_for_daily_necessities:{
+  Covid19DailyNecessities:{
     type: String,
     required: true
   },
-  covid19_need_for_program_ideas:{
+  Covid19ProgramIdeas:{
       tpye: String,
       required: true
   },
-  last_updated:{
+  LastUpdated:{
     type: String,
     required: true
   },
-  remarks:{
+  Remarks:{
     type: String,
     required: true
   },
-  location:{
+  Location:{
     type: String,
     required: true
   },
-  affliliate:{
+  Affliliate:{
     type: String,
     required: true
   },
-  number_of_staff_under_organization:{
-    type: int,
+  NumberOfStaff:{
+    type: Number,
     required: true
   },
-  number_of_beneficiary_under_the_organization:{
-    type: int,
+  NumberOfBeneficiary:{
+    type: Number,
     required: true
   },
-  any_funding:{
+  Funding:{
     type: String,
     required: true
   },
-  methods_to_recruit_volunteers:{
+  MethodsToRecruit:{
     type: String,
     required: true
   },
-  requirement_for_volunteer_recruitment:{
+  Requirements:{
     type: String,
     required: true
   },
-  work_with_us_before:{
-    type: String,
-    required: true
-  },
-  corporate_calendar_probono_skillbased:{
-    type: Boolean,
-    required: false
-  },
-  year_of_cooperation:{
-    type: String,
-    required: false
-  },
-  details_for_previous_experience:{
-    type: String,
-    required: false
-  },
-  suggestions_for_past_experience:{
-    type: String,
-    required: true
-  },
-  coporate_program_wish_list:{
-    type: String,
-    required: true
-  },
-  suggested_notice_period_for_proposal:{
-    type: String,
-    required: true
-  },
-  remarks_policy_after_confirmation_that_need_to_be_aware:{
-    type: String,
-    required: false
-  },
-  calendar_grant_program_wish_list:{
-    type: String,
-    required: true
-  },
-  material_hardware_wish_list:{
-    type: String,
-    required: true
-  },
-  skillbased_volunteers_probono_workshop_needs:{
-    type: String,
-    required: true
-  },
-  facilities_rooms_for_program:{
-    type: String,
-    required: true
-  },
-  contact_person_name:{
-    type: String,
-    required: true
-  },
-  contact:{
-    type: int,
-    required: true
-  },
-  sat_year:{
-    type: int,
-    required: true
-  },
-  meeting_date_time:{
-    type: String,
-    required: true
-  },
-  note_update_date:{
+  WorkWithUsBefore:{
     type: String,
     required: true
   }
-
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model("Crowd", CrowdSchema);
+module.exports = mongoose.model("ngo_partner", NGOPartnerSchema);
