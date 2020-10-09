@@ -2,6 +2,8 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
+import NgoLayout from 'src/layouts/NgoLayout';
+import VolunteerLayout from 'src/layouts/VolunteerLayout';
 import AccountView from 'src/views/account/AccountView';
 import VolunteerListView from 'src/views/volunteer/VolunteerListView';
 import DashboardView from 'src/views/reports/DashboardView';
@@ -11,6 +13,7 @@ import ProductListView from 'src/views/event/EventListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
+import NgoHome from 'src/views/ngo';
 import Home from 'src/views/landing/Home';
 
 const routes = [
@@ -39,9 +42,19 @@ const routes = [
   },
   {
     path: 'ngo',
-    element: <MainLayout />,
+    element: <NgoLayout />,
     children: [
+      { path: '/', element: <NgoHome/> },
       { path: 'request', element: <VolunteerRequestForm /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
+  },
+  {
+    path: 'volunteer',
+    element: <VolunteerLayout />,
+    children: [
+      { path: '/', element: <NgoHome/> },
+      { path: 'events', element: <VolunteerRequestForm /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }

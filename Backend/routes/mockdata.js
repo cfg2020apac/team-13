@@ -9,6 +9,31 @@ const handsOnData = require("../model/handsOn");
 const volunteerData = require("../model/volunteer_data");
 const newVolunteerData = require("../model/new_volunteer")
 
+router.get("/typeChart", async (req, res) => {
+      try {
+        let x = await handsOnData.find();
+        //console.log(x);
+        var output = {};
+
+        for (var element in x){
+            console.log(x[element]);
+            if(x[element]["PopulationsServed"] in output){
+                output[x[element]["PopulationsServed"]] += 1;
+            }
+            else{
+                output[x[element]["PopulationsServed"]] = 1;
+            }
+        }
+        console.log(output);
+        res.json(output);
+    }
+      catch (e) {
+        console.log(e);
+        res.send({ message: "Error in GETing types of Areas." })
+      }
+  });
+  
+
 router.post(
     "/handsOn",
     [

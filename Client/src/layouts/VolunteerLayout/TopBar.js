@@ -37,9 +37,9 @@ const useStyles = makeStyles(() => ({
 
 const items = [
   {
-    href: '/app/account',
+    href: '/volunteer',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Home'
   },
   {
     href: '/login',
@@ -68,7 +68,7 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
+        <RouterLink to="#">
           <Logo />
         </RouterLink>
         <Box p={3} flexDirection="row">

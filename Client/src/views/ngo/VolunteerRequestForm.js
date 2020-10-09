@@ -322,7 +322,7 @@ const VolunteerRequestForm = () => {
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/ngo/skills"
+                    to="#"
                     variant="h6"
                     color="blue"
                   >
