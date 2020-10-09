@@ -28,22 +28,22 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: '/admin/dashboard',
     icon: BarChartIcon,
     title: 'Dashboard'
   },
   {
-    href: '/app/volunteers',
+    href: '/admin/volunteers',
     icon: UserIcon,
     title: 'Volunteers'
   },
   {
-    href: '/app/ngos',
+    href: '/admin/ngos',
     icon: UsersIcon,
     title: 'NGOs'
   },
   {
-    href: '/app/events',
+    href: '/admin/events',
     icon: EventIcon,
     title: 'Events'
   }
@@ -93,7 +93,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           className={classes.avatar}
           component={RouterLink}
           src={user.avatar}
-          to="/app/account"
+          to="/admin/account"
         />
         <Typography
           color="primary"

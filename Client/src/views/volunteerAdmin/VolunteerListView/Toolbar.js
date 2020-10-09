@@ -12,6 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import Export from "../../../utils/Export";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -23,8 +24,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Toolbar = ({ className, ...rest }) => {
+const Toolbar = ({ data, className, ...rest }) => {
   const classes = useStyles();
+  const columns = [
+    {
+      label: "Name",
+      value: "name"
+    },
+    {
+      label: "Email",
+      value: "email"
+    },
+    {
+      label: "Phone",
+      value: "phone"
+    }
+  ];
 
   return (
     <div
@@ -38,9 +53,12 @@ const Toolbar = ({ className, ...rest }) => {
         <Button className={classes.importButton}>
           Import
         </Button>
-        <Button className={classes.exportButton}>
-          Export
-        </Button>
+        <Export
+          data={data}
+          columns={columns}
+          fileName="List of Volunteers"
+          sheetName="Volunteers"
+        />
       </Box>
       <Box mt={3}>
         <Card>

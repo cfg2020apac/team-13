@@ -25,7 +25,7 @@ import Home from 'src/views/landing/Home';
 
 const routes = [
   {
-    path: 'app',
+    path: 'admin',
     element: <DashboardLayout />,
     children: [
       { path: 'volunteers', element: <VolunteerListView /> },
@@ -36,7 +36,7 @@ const routes = [
     ]
   },
   {
-    path: 'app',
+    path: 'admin',
     element: <MainLayout />,
     children: [
       { path: 'login', element: <AdminLoginView /> },
