@@ -75,3 +75,8 @@ Return Type:
 }
 ```
 
+## 6. /web/NGOsignup
+![](imgs/ngosignup.PNG) Parameters are the ones defined by Javier at the slack channel. Returns a JWT on successful authentication.
+
+## 7. /web/NGOlogin
+![](imgs/ngologin.PNG) Just requires the email and password, returns a JWT on successful authentication. 
