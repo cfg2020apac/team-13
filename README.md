@@ -84,3 +84,14 @@ Return Type:
     .
     .
 ```
+
+## 5. /data/genderChart
+![](imgs/genderChart.PNG) Returned data is as follows.
+```javascript
+{
+    "Male": 1,
+    "Female": 8,
+    "Others": 10
+}
+```
+
