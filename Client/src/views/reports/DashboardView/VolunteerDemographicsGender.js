@@ -8,7 +8,7 @@ import {
   CardHeader,
   Divider,
   makeStyles,
-  useTheme, Button
+  Button
 } from '@material-ui/core';
 import { useHttpClient } from "src/hooks/http-hook";
 import { ResponsivePie } from '@nivo/pie';
