@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const InitiateMongoServer = require("./config/db");
-
+const mockdata = require('./routes/mockdata')
 // Initiate Mongo Server
 InitiateMongoServer();
 
@@ -17,7 +17,7 @@ app.get("/HAHA", (req, res) => {  // To extract data
   res.json({ message: "Hello Friends!" });
 });
 
-//app.use("/data", mockdata);
+app.use("/data", mockdata);
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);
