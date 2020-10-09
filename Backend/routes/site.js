@@ -11,6 +11,17 @@ const Opening = require("../model/opening")
 const EventSignUp = require("../model/SignUpEvent")
 
 
+router.get("/getUser", authV, async (req, res) => {
+    try {
+      // request.user is getting fetched from Middleware after token authentication
+      const person = await User.findById(req.person.id);
+      res.json(person);
+      //console.log(user);
+      //console.log(type(user));
+    } catch (e) {
+      res.send({ message: "Error in Fetching user" });
+    }
+  });
 
 router.get("/eventRegisterers", async (req, res) => {
     const {
@@ -55,7 +66,7 @@ router.post("/eventSignUp", authV, async (req, res) => {
                 msg: "Maximum threshold reached!"
               });
         }
-        
+
         let a = await EventSignUp.find({
             EventID
         });
