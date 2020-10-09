@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -13,6 +13,7 @@ import {
   Link
 } from '@material-ui/core';
 import EventDetails from './EventDetails';
+import { useHttpClient } from "src/hooks/http-hook";
 
 const events = [
   {
@@ -43,21 +44,34 @@ const useStyles = makeStyles(() => ({
 
 const NgoDetails = ({ className, ...rest }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
-  });
+  const { isLoading, error, sendRequest } = useHttpClient();
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/web/upcomingEvents`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setData(responseData);
+        }
+        // console.log(responseData)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (data.length === 0) {
+      getData();
+    }
+  }, [isLoading, sendRequest, error]);
 
   return (
     <form
@@ -77,7 +91,7 @@ const NgoDetails = ({ className, ...rest }) => {
             container
             spacing={3}
           >
-            <EventDetails events={events}/>
+            <EventDetails events={data}/>
           </Grid>
         </CardContent>
         <Divider />
