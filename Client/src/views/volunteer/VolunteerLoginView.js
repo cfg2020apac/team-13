@@ -15,6 +15,7 @@ import {
 import FacebookIcon from 'src/icons/Facebook';
 import GoogleIcon from 'src/icons/Google';
 import Page from 'src/components/Page';
+import { useHttpClient } from "src/hooks/http-hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const VolunteerLoginView = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const { isLoading, error, sendRequest } = useHttpClient();
 
   return (
     <Page
@@ -50,8 +52,23 @@ const VolunteerLoginView = () => {
               email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required')
             })}
-            onSubmit={() => {
-              navigate('/volunteer', { replace: true });
+            onSubmit={async ({email, password}) => {
+              const login = {
+                "Email": email,
+                "Password": password
+              }
+              console.log(JSON.stringify(login))
+              const responseData = await sendRequest(
+                `${process.env.REACT_APP_DEV_URL}/web/login`,
+                "POST",
+                JSON.stringify(login),
+                { "Content-Type": "application/json" }
+              );
+              if(responseData){
+                console.log(responseData)
+                localStorage.setItem("token", responseData["token"]);
+                navigate('/volunteer', { replace: true });
+              }
             }}
           >
             {({
