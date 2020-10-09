@@ -76,7 +76,7 @@ const VolunteerLoginView = () => {
                     gutterBottom
                     variant="body2"
                   >
-                    Sign in on the internal platform
+                    Sign in on the volunteer platform
                   </Typography>
                 </Box>
                 <Grid
