@@ -11,6 +11,32 @@ const newVolunteerData = require("../model/new_volunteer");
 const queries = require("./queries");
 const e = require("express");
 
+getVolunteerCount = (minVal, maxVal) => {
+    try {
+        let cnt = await volunteerData.where('Age').gte(minVal).lte(maxVal).count;
+        return cnt;
+    }
+};
+
+router.get("/ageCount", async (req, res) => {
+    try {
+        let ageSeparator = [18, 25, 40];
+        cnt = {};
+        for (let i = 0; i < ageSeparator.length + 1; i++) {
+            let minVal = (i == 0 ? 0 : ageSeparator[i - 1]);
+            let maxVal = (i == ageSeparator.length ? 200 : ageSeparator[i]);
+
+            let key = minVal + "-" + maxVal;
+            cnt[key] = getVolunteerCount();
+        }
+        res.json(cnt);
+
+    } catch (e) {
+        console.log(e);
+        res.send({ message: "Error in GETting ageCount" })
+    }
+});
+
 router.get("/attendanceChart", async (req, res) => {
     try {
       let x = await handsOnData.find();
