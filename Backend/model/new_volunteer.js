@@ -30,11 +30,11 @@ const NewVolunteerSchema = mongoose.Schema({
       required: true
   },
   Employer:{
-    tpye: String,
+    type: String,
     required: true
   },
   Age:{
-    tpye: Number,
+    type: Number,
     required: true
   },
   HoursServed:{
@@ -42,7 +42,7 @@ const NewVolunteerSchema = mongoose.Schema({
     required: true
   },
   Email:{
-    tpye: String,
+    type: String,
     required: true
   },
   MobilePhone:{
@@ -66,7 +66,7 @@ const NewVolunteerSchema = mongoose.Schema({
     required: true
   },
   Gender:{
-    tpye: String,
+    type: String,
     required: true
   },
   EthnicityRace:{
