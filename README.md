@@ -104,3 +104,13 @@ Return Type:
         Needed,
         AgeRequirement (optional)
 ```
+
+## 10. /web/upcomingEvents
+![](imgs/upcomingEvents.PNG) Array of json objects with all details of all registered events.
+
+## 11. /web/allVolunteers 
+![](imgs/allVolunteers.PNG) Array of json objects with all details of all registered volunteers.
+
+## 12. /web/allNGOs 
+![](imgs/allNGOs.PNG) Array of json objects with all details of all registered NGOs.
+
