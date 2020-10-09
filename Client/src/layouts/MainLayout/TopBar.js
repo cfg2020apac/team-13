@@ -44,7 +44,7 @@ const items = [
   {
     href: '/app/volunteers',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'Volunteers'
   },
   {
     href: '/app/events',

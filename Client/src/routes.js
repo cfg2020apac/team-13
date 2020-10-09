@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
-import CustomerListView from 'src/views/customer/CustomerListView';
+import VolunteerListView from 'src/views/volunteer/VolunteerListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
-import ProductListView from 'src/views/product/ProductListView';
+import ProductListView from 'src/views/event/EventListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
 import VolunteerRequestForm from 'src/views/ngo/VolunteerRequestForm';
@@ -19,7 +19,7 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'account', element: <AccountView /> },
-      { path: 'volunteers', element: <CustomerListView /> },
+      { path: 'volunteers', element: <VolunteerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'events', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },

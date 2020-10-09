@@ -10,7 +10,7 @@ import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
 import Sales from './Sales';
 import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
+import TotalVolunteers from './TotalVolunteers';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <TotalVolunteers />
           </Grid>
           <Grid
             item

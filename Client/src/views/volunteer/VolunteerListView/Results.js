@@ -28,40 +28,40 @@ const useStyles = makeStyles((theme) => ({
 
 const Results = ({ className, volunteers, ...rest }) => {
   const classes = useStyles();
-  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
+  const [selectedVolunteerIds, setSelectedVolunteerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
-    let newSelectedCustomerIds;
+    let newSelectedVolunteerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = volunteers.map((customer) => customer.id);
+      newSelectedVolunteerIds = volunteers.map((volunteer) => volunteer.id);
     } else {
-      newSelectedCustomerIds = [];
+      newSelectedVolunteerIds = [];
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
+    setSelectedVolunteerIds(newSelectedVolunteerIds);
   };
 
   const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedCustomerIds.indexOf(id);
-    let newSelectedCustomerIds = [];
+    const selectedIndex = selectedVolunteerIds.indexOf(id);
+    let newSelectedVolunteerIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
+      newSelectedVolunteerIds = newSelectedVolunteerIds.concat(selectedVolunteerIds, id);
     } else if (selectedIndex === 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
-    } else if (selectedIndex === selectedCustomerIds.length - 1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
+      newSelectedVolunteerIds = newSelectedVolunteerIds.concat(selectedVolunteerIds.slice(1));
+    } else if (selectedIndex === selectedVolunteerIds.length - 1) {
+      newSelectedVolunteerIds = newSelectedVolunteerIds.concat(selectedVolunteerIds.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds.slice(0, selectedIndex),
-        selectedCustomerIds.slice(selectedIndex + 1)
+      newSelectedVolunteerIds = newSelectedVolunteerIds.concat(
+        selectedVolunteerIds.slice(0, selectedIndex),
+        selectedVolunteerIds.slice(selectedIndex + 1)
       );
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
+    setSelectedVolunteerIds(newSelectedVolunteerIds);
   };
 
   const handleLimitChange = (event) => {
@@ -84,11 +84,11 @@ const Results = ({ className, volunteers, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === volunteers.length}
+                    checked={selectedVolunteerIds.length === volunteers.length}
                     color="primary"
                     indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < volunteers.length
+                      selectedVolunteerIds.length > 0
+                      && selectedVolunteerIds.length < volunteers.length
                     }
                     onChange={handleSelectAll}
                   />
@@ -111,16 +111,16 @@ const Results = ({ className, volunteers, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {volunteers.slice(0, limit).map((customer) => (
+              {volunteers.slice(0, limit).map((volunteer) => (
                 <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={volunteer.id}
+                  selected={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      checked={selectedVolunteerIds.indexOf(volunteer.id) !== -1}
+                      onChange={(event) => handleSelectOne(event, volunteer.id)}
                       value="true"
                     />
                   </TableCell>
@@ -131,29 +131,29 @@ const Results = ({ className, volunteers, ...rest }) => {
                     >
                       <Avatar
                         className={classes.avatar}
-                        src={customer.avatarUrl}
+                        src={volunteer.avatarUrl}
                       >
-                        {getInitials(customer.name)}
+                        {getInitials(volunteer.name)}
                       </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.name}
+                        {volunteer.name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {volunteer.email}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {`${volunteer.address.city}, ${volunteer.address.state}, ${volunteer.address.country}`}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {volunteer.phone}
                   </TableCell>
                   <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                    {moment(volunteer.createdAt).format('DD/MM/YYYY')}
                   </TableCell>
                 </TableRow>
               ))}

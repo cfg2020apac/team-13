@@ -66,7 +66,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Search product"
+                placeholder="Search event"
                 variant="outlined"
               />
             </Box>
