@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CrowdSchema = mongoose.Schema({
+const VolunteerSchema = mongoose.Schema({
   email:{
     type: String,
     required: true
@@ -32,4 +32,4 @@ const CrowdSchema = mongoose.Schema({
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model("Crowd", CrowdSchema);
+module.exports = mongoose.model("volunteer_data", VolunteerSchema);
