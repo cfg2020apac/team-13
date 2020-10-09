@@ -12,7 +12,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const EventCard = ({ className, product, ...rest }) => {
+const EventCard = ({ className, event, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -43,8 +43,8 @@ const EventCard = ({ className, product, ...rest }) => {
           mb={3}
         >
           <Avatar
-            alt="Product"
-            src={product.media}
+            alt="Event"
+            src={event.media}
             variant="square"
           />
         </Box>
@@ -54,14 +54,43 @@ const EventCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {event["NGOName"]}
+        </Typography>
+        <Typography
+          align="center"
+          color="textPrimary"
+          gutterBottom
+          variant="h4"
+        >
+          {event["Title"]}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
           variant="body1"
         >
-          {product.description}
+          {event["Description"]}
+        </Typography>
+        <Typography
+          align="center"
+          color="textPrimary"
+          variant="body1"
+        >
+          {event["Location"]}
+        </Typography>
+        <Typography
+          align="center"
+          color="textPrimary"
+          variant="body1"
+        >
+          {`${moment(event["Start"]).format('MM/DD/YY, h:mm:ss a')} - ${moment(event["End"]).format('MM/DD/YY, h:mm:ss a')}`}
+        </Typography>
+        <Typography
+          align="center"
+          color="textPrimary"
+          variant="body1"
+        >
+          Minimum Age: {event["AgeRequirement"]}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -92,18 +121,14 @@ const EventCard = ({ className, product, ...rest }) => {
             className={classes.statsItem}
             item
           >
-            <GetAppIcon
-              className={classes.statsIcon}
-              color="action"
-            />
             <Typography
               color="textSecondary"
               display="inline"
               variant="body2"
             >
-              {product.totalDownloads}
+              {`${event["CurrentlySignedUp"]} / ${event["Needed"]}`}
               {' '}
-              Downloads
+              Signups
             </Typography>
           </Grid>
         </Grid>
@@ -114,7 +139,7 @@ const EventCard = ({ className, product, ...rest }) => {
 
 EventCard.propTypes = {
   className: PropTypes.string,
-  product: PropTypes.object.isRequired
+  event: PropTypes.object.isRequired
 };
 
 export default EventCard;

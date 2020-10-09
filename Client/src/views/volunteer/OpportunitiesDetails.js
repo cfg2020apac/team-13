@@ -30,12 +30,16 @@ const useStyles = makeStyles({
     fontSize: 20,
   },
   pos: {
-    marginBottom: 10,
+    marginBottom: 5,
   },
 });
 
 const OpportunitiesDetails = ({className, ...rest}) => {
   const classes = useStyles();
+
+  const registerEvent = () => {
+    console.log("registered")
+  }
 
   return (
     <>
@@ -62,7 +66,7 @@ const OpportunitiesDetails = ({className, ...rest}) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button color="secondary" size="small">View More</Button>
+                <Button color="secondary" size="large" onClick={() => registerEvent()}>Apply</Button>
               </CardActions>
             </Card>
             </>
