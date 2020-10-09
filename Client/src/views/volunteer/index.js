@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -16,6 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import Volunteer from './Volunteer';
 import VolunteerDetails from './VolunteerDetails';
 import OpportunitiesDetails from './OpportunitiesDetails';
+import { useHttpClient } from "src/hooks/http-hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,6 +75,34 @@ const events = [
 
 const NgoHome = () => {
   const classes = useStyles();
+  const { isLoading, error, sendRequest } = useHttpClient();
+
+  const [opportunities, setOpportunities] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const responseData = await sendRequest(
+          //  TODO: CHANGE BACK TO PROD
+          `${process.env.REACT_APP_DEV_URL}/web/upcomingEvents`,
+          "GET",
+          null,
+          {}
+        );
+
+        if (responseData) {
+          setOpportunities(responseData);
+        }
+        // console.log(responseData)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (opportunities.length === 0) {
+      getData();
+    }
+  }, [isLoading, sendRequest, error]);
 
   return (
     <Page
@@ -121,7 +150,7 @@ const NgoHome = () => {
               <Typography color="textSecondary" variant="h4">
                 Edit your skills and preferences to refine these suggestions
               </Typography>
-              <OpportunitiesDetails events={events}/>
+              <OpportunitiesDetails events={opportunities}/>
             </Grid>
           </Grid>
         </Box>

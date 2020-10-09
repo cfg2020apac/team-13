@@ -13,6 +13,7 @@ import {
   makeStyles,
   Link
 } from '@material-ui/core';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   root: {
@@ -45,10 +46,19 @@ const OpportunitiesDetails = ({className, ...rest}) => {
             <Card className={classes.root} variant="outlined">
               <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                  {event.name}
+                  {event["Title"]}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                  {event.dateTime}
+                  {event["Description"]}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {event["Location"]}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`Start: ${moment(event["Start"]).format('MMMM Do YYYY, h:mm:ss a')}`}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`End: ${moment(event["End"]).format('MMMM Do YYYY, h:mm:ss a')}`}
                 </Typography>
               </CardContent>
               <CardActions>
