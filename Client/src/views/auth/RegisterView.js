@@ -11,8 +11,14 @@ import {
   Link,
   TextField,
   Typography,
-  makeStyles
+  makeStyles,
+  Card,
+  CardContent,
+  ButtonBase
 } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import BusinessIcon from '@material-ui/icons/Business';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import Page from 'src/components/Page';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +27,28 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  card: {
+    width: 400,
+    height: 300,
+    marginRight: '50px',
+    textAlign: 'center',
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
+  },
+  title: {
+    fontSize: 30,
+    marginTop: '20px'
+  },
+  icon: {
+    fontSize: 70,
+    marginTop: '50px'
   }
 }));
 
@@ -39,8 +67,33 @@ const RegisterView = () => {
         height="100%"
         justifyContent="center"
       >
-        <Container maxWidth="sm">
-          
+        <Container className={classes.container}>
+          <ButtonBase
+              href="/volunteer/register"
+              className={classes.cardAction}
+          >
+            <Card className={classes.card}>
+                <CardContent>
+                  <AccountCircleIcon className={classes.icon}/>
+                  <Typography className={classes.title} color="textSecondary">
+                    Register as Volunteer
+                  </Typography>
+                </CardContent>
+            </Card>
+          </ButtonBase>
+          <ButtonBase
+              href="/ngo/register"
+              className={classes.cardAction}
+          >
+            <Card className={classes.card}>
+                <CardContent>
+                  <BusinessIcon className={classes.icon}/>
+                  <Typography className={classes.title} color="textSecondary">
+                    Register as NGO
+                  </Typography>
+                </CardContent>
+            </Card>
+          </ButtonBase>
         </Container>
       </Box>
     </Page>
