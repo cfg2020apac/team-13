@@ -20,7 +20,10 @@ const user = {
   country: 'Hong Kong',
   jobTitle: 'NGO',
   name: 'Feeding Hong Kong',
-  timezone: 'GTM-7'
+  location: 'Wan Chai Station',
+  description: 'Feeding poor people',
+  staff: 50,
+  covid: ["Face Masks", "Hand Sanitizer"]
 };
 
 const useStyles = makeStyles(() => ({
@@ -62,14 +65,25 @@ const Ngo = ({ className, ...rest }) => {
             color="textSecondary"
             variant="body1"
           >
-            {`${user.city} ${user.country}`}
+            {user.description}
           </Typography>
           <Typography
-            className={classes.dateText}
             color="textSecondary"
             variant="body1"
           >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
+            {`${user.city} ${user.country}`}
+          </Typography>
+          <Typography
+            color="textSecondary"
+            variant="body1"
+          >
+            {user.location}
+          </Typography>
+          <Typography
+            color="textSecondary"
+            variant="body1"
+          >
+            No. of staff: {user.staff}+
           </Typography>
         </Box>
       </CardContent>
