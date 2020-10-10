@@ -59,7 +59,7 @@ const NgoLoginView = () => {
               }
               console.log(JSON.stringify(login))
               const responseData = await sendRequest(
-                `${process.env.REACT_APP_DEV_URL}/web/login`,
+                `${process.env.REACT_APP_DEV_URL}/web/NGOlogin`,
                 "POST",
                 JSON.stringify(login),
                 { "Content-Type": "application/json" }
