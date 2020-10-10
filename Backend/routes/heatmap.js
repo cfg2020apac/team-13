@@ -62,13 +62,13 @@ router.get('/getLocations', async (req, res) => {
     }
 
     var result = counting(locations);
-    console.log(result)
+    //console.log(result)
 
     let addressesFrequency = [];
     for (var i = 0; i < result[0].length; i++) {
         addressesFrequency.push([result[0][i], result[1][i]]);
     }
-    console.log(addressesFrequency.length);
+    //console.log(addressesFrequency.length);
 
     res.json(
         await Promise.all(addressesFrequency.map(async (addressFreq) => {
@@ -79,7 +79,7 @@ router.get('/getLocations', async (req, res) => {
                 const geocoderService = axios.create({ baseURL : REQUEST_API})
                 scheduleRequests(geocoderService, 100);
                 const resp = await geocoderService.get(REQUEST_API).catch(error => console.log(error.response.status));
-                console.log(resp.status)
+                //console.log(resp.status)
                 if (resp.data.length == 0) {
                     return {"name": address, "freq": freq};
                 }
