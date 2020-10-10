@@ -10,6 +10,7 @@ import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import EventCard from './EventCard';
+import Heatmap from './Heatmap';
 import data from './data';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,6 +61,7 @@ const ProductList = () => {
     >
       <Container maxWidth={false}>
         <Toolbar data={events}/>
+        <Heatmap/>
         <Box mt={3}>
           <Grid
             container
