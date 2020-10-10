@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { check, validationResult, query } = require("express-validator/check");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

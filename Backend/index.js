@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const InitiateMongoServer = require("./config/db");
 const heatmap = require('./routes/heatmap');
@@ -8,6 +9,8 @@ const site = require('./routes/site');
 InitiateMongoServer();
 
 const app = express();
+
+app.use(cors())
 
 // PORT
 const PORT = process.env.PORT || 4000;

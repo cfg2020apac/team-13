@@ -17,7 +17,7 @@ import moment from 'moment';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 245,
+    width: 240,
     margin: '10px',
     wordWrap: 'break-word'
   },
